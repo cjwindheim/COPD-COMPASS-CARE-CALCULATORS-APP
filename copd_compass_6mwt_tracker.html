@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#233F94">
+<title>6-Minute Walk Test Tracker – COPD Compass Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#233F94;--purple:#68267E;--bg:#F5F6FA;--card:#FFFFFF;--ink:#1B1F2E;--muted:#555B70;--line:#D6DAE6;--accent:var(--navy);--accent-ink:#FFFFFF;--note-bg:#F1E9F5;--note-line:var(--purple);--danger:#A52A2A;--good:#236B3A}
+@media(prefers-color-scheme:dark){:root{--bg:#111521;--card:#1A2030;--ink:#F4F6FC;--muted:#B7BDCF;--line:#343B4E;--note-bg:#2A2030}}
+[data-theme="dark"]{--bg:#111521;--card:#1A2030;--ink:#F4F6FC;--muted:#B7BDCF;--line:#343B4E;--note-bg:#2A2030}
+[data-theme="light"]{--bg:#F5F6FA;--card:#FFFFFF;--ink:#1B1F2E;--muted:#555B70;--line:#D6DAE6;--note-bg:#F1E9F5}
+*{box-sizing:border-box}html{font-family:'Atkinson Hyperlegible',system-ui,sans-serif;background:var(--bg);color:var(--ink)}body{margin:0;background:var(--bg);line-height:1.45}.wrap{max-width:640px;margin:0 auto;padding:18px 14px 40px}.header{padding:8px 2px 16px}.brand{font-weight:700;color:var(--purple);font-size:15px;letter-spacing:.2px}.header h1{font-size:30px;line-height:1.12;margin:5px 0 8px;color:var(--navy)}.header p{margin:0;color:var(--muted);font-size:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:12px 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}h2{font-size:20px;margin:0 0 13px;color:var(--navy)}h3{font-size:17px;margin:17px 0 9px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}label{display:block;font-weight:700;font-size:15px;margin:0 0 6px}.help{display:block;color:var(--muted);font-size:13px;font-weight:400;margin-top:3px}input,select,textarea{width:100%;min-height:48px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);padding:10px 12px;font:inherit;font-size:16px}textarea{min-height:92px;resize:vertical}.unitrow{display:grid;grid-template-columns:1fr 112px;gap:8px}.optgrid{display:grid;gap:8px}.opt{border:2px solid var(--line);border-radius:10px;padding:11px 12px;display:flex;gap:10px;align-items:flex-start;cursor:pointer;background:var(--card)}.opt input{width:auto;min-height:auto;margin-top:3px}.opt.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--card))}.btns{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btns.three{grid-template-columns:repeat(3,1fr)}button{min-height:48px;border:2px solid var(--accent);border-radius:10px;background:var(--card);color:var(--accent);font:700 16px inherit;padding:9px 12px;cursor:pointer}button:hover{filter:brightness(.97)}button.on,button.primary{background:var(--accent);color:var(--accent-ink)}button.danger{border-color:var(--danger);color:var(--danger)}button.small{min-height:40px;font-size:14px;padding:7px 10px}.score{text-align:center;padding:7px 0 12px}.score .n{font-size:64px;line-height:.95;font-weight:700;color:var(--navy)}.score .unit{font-size:20px;color:var(--muted);font-weight:700}.subscore{color:var(--muted);font-size:15px;margin-top:4px}.resultgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{border:1px solid var(--line);border-radius:10px;padding:11px}.metric .k{font-size:13px;color:var(--muted)}.metric .v{font-size:20px;font-weight:700;margin-top:2px}.note{background:var(--note-bg);border-left:4px solid var(--note-line);padding:12px 13px;border-radius:8px;color:var(--ink);font-size:14px}.fine{font-size:13px;color:var(--muted)}.hidden{display:none!important}.hist{display:grid;gap:9px}.histitem{border:1px solid var(--line);border-radius:10px;padding:11px}.histtop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.histdate{font-weight:700}.histdistance{font-weight:700;color:var(--navy)}.histmeta{color:var(--muted);font-size:13px;margin-top:4px}.histactions{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.comparebox{border:2px solid var(--purple);border-radius:10px;padding:12px}.delta.good{color:var(--good)}.delta.bad{color:var(--danger)}svg{width:100%;height:220px;display:block}.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:var(--card);padding:10px 14px;border-radius:999px;font-weight:700;z-index:20;box-shadow:0 5px 20px rgba(0,0,0,.2)}.footer{font-size:12px;color:var(--muted);padding:5px 3px 0}.toggle{display:flex;justify-content:flex-end;margin-bottom:8px}.toggle button{min-height:38px;font-size:13px}@media(max-width:470px){.grid,.resultgrid{grid-template-columns:1fr}.btns.three{grid-template-columns:1fr}.unitrow{grid-template-columns:1fr 100px}}
+</style>
+
+<style id="ccc-navigation-style">
+.ccc-nav{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:0 0 16px;padding:10px 11px;background:var(--card,#fff);border:1px solid var(--line,#D6DAE6);border-radius:12px;box-shadow:0 2px 8px rgba(27,31,46,.05)}
+.ccc-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:6px 9px;border:1px solid var(--line,#D6DAE6);border-radius:8px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;font-size:13px;line-height:1.1;background:var(--card,#fff)}
+.ccc-nav a:hover{filter:brightness(.97)}
+.ccc-nav a.active{background:var(--navy,#233F94);border-color:var(--navy,#233F94);color:#fff}
+.ccc-nav .home{color:var(--purple,#68267E);border-color:var(--purple,#68267E)}
+.ccc-nav-label{width:100%;font-size:12px;font-weight:700;color:var(--muted,#555B70);margin:0 0 1px 2px;letter-spacing:.2px}
+.ccc-next{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:16px 0 4px;padding-top:14px;border-top:1px solid var(--line,#D6DAE6)}
+.ccc-next a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:8px 12px;border:2px solid var(--navy,#233F94);border-radius:9px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;background:var(--card,#fff)}
+.ccc-next a.primary{background:var(--navy,#233F94);color:#fff}
+@media(max-width:520px){.ccc-nav{gap:6px}.ccc-nav a{font-size:12px;padding:6px 8px}.ccc-next{display:grid;grid-template-columns:1fr}.ccc-next a{width:100%}}
+</style>
+</head>
+<body>
+<nav class="ccc-nav" aria-label="COPD Compass Care assessments">
+<div class="ccc-nav-label">COPD Compass Care Assessments</div>
+<a class="home" href="index.html">Assessment Center</a>
+<a href="copd_compass_bode_index.html">BODE Index</a>
+<a href="copd_compass_weight_bmi_tracker.html">Weight / BMI</a>
+<a href="copd_compass_pft_fev1_tracker.html">PFT / FEV₁</a>
+<a href="copd_compass_6mwt_tracker.html" class="active">6-Minute Walk</a>
+<a href="copd_compass_spo2_oxygen_tracker.html">SpO₂ / Oxygen</a>
+<a href="copd_compass_symptoms_tracker.html">Symptoms</a>
+<a href="copd_compass_exacerbation_tracker.html">Exacerbations</a>
+<a href="copd_compass_hospital_er_tracker.html">Hospital / ER</a>
+<a href="copd_compass_medication_tracker.html">Medications</a>
+<a href="copd_compass_hagos_tracker.html">HAGOS</a>
+</nav>
+<div class="wrap">
+  <div class="toggle"><button id="themeBtn" type="button">Toggle theme</button></div>
+  <header class="header">
+    <div class="brand">COPD COMPASS CARE</div>
+    <h1>6-Minute Walk Test Tracker</h1>
+    <p>Record, compare, and share your 6-minute walking results while keeping the testing conditions that can affect interpretation.</p>
+  </header>
+
+  <section class="card">
+    <h2>Test information</h2>
+    <div class="grid">
+      <div><label for="date">Assessment date</label><input id="date" type="date"></div>
+      <div><label for="testNo">Test number</label><select id="testNo"><option value="1">1st test</option><option value="2">2nd test</option><option value="3">Follow-up</option><option value="other">Other</option></select></div>
+      <div><label for="standardized">Standardized clinical 6MWT?<span class="help">Use the protocol provided by your clinician or test site.</span></label><select id="standardized"><option value="yes">Yes</option><option value="no">No</option><option value="unknown">Unknown</option></select></div>
+      <div><label for="completed">Completed full 6 minutes?</label><select id="completed"><option value="yes">Yes</option><option value="no">No</option></select></div>
+      <div class="full hidden" id="timeWrap"><label for="walkTime">Walking time completed (minutes)</label><input id="walkTime" type="number" min="0" max="6" step="0.1" placeholder="e.g., 4.5"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Distance</h2>
+    <div class="grid">
+      <div><label for="distance">Total distance walked</label><div class="unitrow"><input id="distance" type="number" min="0" step="0.1" placeholder="Enter distance"><select id="distanceUnit"><option value="m">meters</option><option value="ft">feet</option></select></div></div>
+      <div><label for="course">Course length<span class="help">Record this for valid comparisons.</span></label><div class="unitrow"><input id="course" type="number" min="0" step="0.1" placeholder="e.g., 30"><select id="courseUnit"><option value="m">meters</option><option value="ft">feet</option></select></div></div>
+      <div><label for="laps">Completed laps</label><input id="laps" type="number" min="0" step="1" placeholder="Optional"></div>
+      <div><label for="stops">Stops/rest periods</label><input id="stops" type="number" min="0" step="1" value="0"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Oxygen</h2>
+    <div class="grid">
+      <div><label for="oxygen">Supplemental oxygen used?</label><select id="oxygen"><option value="no">No</option><option value="yes">Yes</option></select></div>
+      <div><label for="flow">Flow rate (L/min)</label><input id="flow" type="number" min="0" step="0.5" placeholder="Optional"></div>
+      <div class="full"><label for="delivery">Delivery method</label><select id="delivery"><option value="">Not specified</option><option>Nasal cannula</option><option>Portable concentrator</option><option>Compressed oxygen</option><option>Other</option></select></div>
+      <div><label for="startSpo2">Starting SpO₂ (%)</label><input id="startSpo2" type="number" min="50" max="100" step="1" placeholder="Optional"></div>
+      <div><label for="lowSpo2">Lowest SpO₂ (%)<span class="help">Record the nadir if monitored.</span></label><input id="lowSpo2" type="number" min="50" max="100" step="1" placeholder="Optional"></div>
+      <div><label for="endSpo2">Ending SpO₂ (%)</label><input id="endSpo2" type="number" min="50" max="100" step="1" placeholder="Optional"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Heart rate</h2>
+    <div class="grid">
+      <div><label for="startHr">Starting HR (bpm)</label><input id="startHr" type="number" min="20" max="250" step="1" placeholder="Optional"></div>
+      <div><label for="endHr">Ending HR (bpm)</label><input id="endHr" type="number" min="20" max="250" step="1" placeholder="Optional"></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Symptoms</h2>
+    <div class="grid">
+      <div><label for="dyspneaBefore">Dyspnea before</label><select id="dyspneaBefore"><option value="">Not recorded</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+      <div><label for="dyspneaAfter">Dyspnea after</label><select id="dyspneaAfter"><option value="">Not recorded</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+      <div><label for="fatigueBefore">Fatigue before</label><select id="fatigueBefore"><option value="">Not recorded</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+      <div><label for="fatigueAfter">Fatigue after</label><select id="fatigueAfter"><option value="">Not recorded</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10</option></select></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Other test conditions</h2>
+    <div class="grid">
+      <div><label for="aid">Walking aid</label><select id="aid"><option value="None">None</option><option>Cane</option><option>Walker</option><option>Rollator</option><option>Other</option></select></div>
+      <div><label for="stoppedReason">Primary limitation / stopping reason</label><select id="stoppedReason"><option value="">Not specified</option><option>Dyspnea</option><option>Leg fatigue</option><option>Both dyspnea and fatigue</option><option>Other symptom</option><option>Test completed</option><option>Other</option></select></div>
+      <div class="full"><label for="notes">Notes</label><textarea id="notes" placeholder="Optional: protocol differences, unusual symptoms, test conditions, or anything your clinician asked you to record."></textarea></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="btns">
+      <button class="primary" id="calculate" type="button">Calculate result</button>
+      <button id="clearCurrent" type="button">Clear current</button>
+    </div>
+  </section>
+
+  <section class="card hidden" id="resultCard">
+    <h2>Result</h2>
+    <div class="score"><div class="n" id="resultDistance">—</div><div class="unit">meters</div><div class="subscore" id="resultFeet">— ft</div></div>
+    <div class="resultgrid">
+      <div class="metric"><div class="k">Lowest SpO₂</div><div class="v" id="rSpo2">Not recorded</div></div>
+      <div class="metric"><div class="k">HR response</div><div class="v" id="rHr">Not recorded</div></div>
+      <div class="metric"><div class="k">Dyspnea</div><div class="v" id="rDyspnea">Not recorded</div></div>
+      <div class="metric"><div class="k">Fatigue</div><div class="v" id="rFatigue">Not recorded</div></div>
+      <div class="metric"><div class="k">Oxygen</div><div class="v" id="rOxygen">Not recorded</div></div>
+      <div class="metric"><div class="k">Stops</div><div class="v" id="rStops">0</div></div>
+    </div>
+    <div id="changeBox" class="note hidden" style="margin-top:12px"></div>
+    <div class="note" style="margin-top:12px"><strong>Interpretation:</strong> 6-minute walk distance (6MWD) is the primary outcome of the 6MWT. Changes over time should be interpreted with the testing conditions in mind, including course length, oxygen use, walking aid, and protocol. ATS currently summarizes COPD minimally important difference estimates around 25–33 m; this is a population-level reference, not a guarantee that a specific change is clinically meaningful for one person. cite not rendered in app</div>
+    <div class="btns" style="margin-top:12px"><button class="primary" id="share" type="button">Share result</button><button id="copy" type="button">Copy result</button></div>
+    <div class="btns" style="margin-top:9px"><button id="save" type="button">Save assessment</button><button id="backup" type="button">Backup history</button></div>
+  </section>
+
+  <section class="card hidden" id="compareCard">
+    <h2>Compare assessments</h2>
+    <div id="compareContent"></div>
+  </section>
+
+  <section class="card">
+    <h2>Saved assessments</h2>
+    <div class="btns"><button id="clearHistory" class="danger" type="button">Clear saved history</button><button id="restore" type="button">Restore backup</button></div>
+    <input id="restoreFile" type="file" accept="application/json" class="hidden">
+    <div id="history" class="hist" style="margin-top:12px"></div>
+    <div id="chartWrap" class="hidden" style="margin-top:15px"><h3>6MWD trend</h3><svg id="chart" viewBox="0 0 600 220" role="img" aria-label="6-minute walk distance trend"></svg></div>
+  </section>
+
+  <div class="footer">COPD Compass Care • Guided Support and Practical Care for COPD<br>Tracking tool only. It does not replace a standardized clinical test or medical advice. Follow the instructions of your clinician or test site, especially regarding exercise safety and oxygen.</div>
+</div>
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+<script>
+const KEY='ccc_6mwt_v1';
+let history=loadHistory();
+let current=null;
+const $=id=>document.getElementById(id);
+function today(){return new Date().toISOString().slice(0,10)}
+$('date').value=today();
+function loadHistory(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return []}}
+function persist(){localStorage.setItem(KEY,JSON.stringify(history));renderHistory()}
+function toast(msg){$('toast').textContent=msg;$('toast').classList.remove('hidden');clearTimeout(window.__toast);window.__toast=setTimeout(()=>$('toast').classList.add('hidden'),2200)}
+function num(id){const v=parseFloat($(id).value);return Number.isFinite(v)?v:null}
+function val(id){return $(id).value}
+function meters(distance,unit){return unit==='ft'?distance*0.3048:distance}
+function feet(m){return m/0.3048}
+function fmt(n,d=1){return Number.isFinite(n)?n.toFixed(d):'—'}
+function selectClass(){document.querySelectorAll('.opt').forEach(x=>x.classList.toggle('sel',x.querySelector('input')?.checked))}
+$('completed').addEventListener('change',()=>{$('timeWrap').classList.toggle('hidden',$('completed').value==='yes')});
+$('oxygen').addEventListener('change',()=>{$('flow').disabled=$('oxygen').value==='no';$('delivery').disabled=$('oxygen').value==='no'});$('oxygen').dispatchEvent(new Event('change'));
+function collect(){
+ const d=num('distance'); if(d===null||d<0) throw new Error('Enter the total distance walked.');
+ const m=meters(d,val('distanceUnit')); if(m<=0) throw new Error('Distance must be greater than zero.');
+ const c=num('course'); const courseM=c===null?null:meters(c,val('courseUnit'));
+ const wt=num('walkTime'); if(val('completed')==='no'&&(wt===null||wt<=0||wt>6)) throw new Error('Enter the amount of walking time completed, from 0 to 6 minutes.');
+ return {id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),date:val('date')||today(),testNo:val('testNo'),standardized:val('standardized'),completed:val('completed'),walkTime:wt,distanceM:m,distanceFt:feet(m),courseM, laps:num('laps'),stops:num('stops')??0,oxygen:val('oxygen'),flow:num('flow'),delivery:val('delivery'),startSpo2:num('startSpo2'),lowSpo2:num('lowSpo2'),endSpo2:num('endSpo2'),startHr:num('startHr'),endHr:num('endHr'),dyspneaBefore:val('dyspneaBefore')===''?null:Number(val('dyspneaBefore')),dyspneaAfter:val('dyspneaAfter')===''?null:Number(val('dyspneaAfter')),fatigueBefore:val('fatigueBefore')===''?null:Number(val('fatigueBefore')),fatigueAfter:val('fatigueAfter')===''?null:Number(val('fatigueAfter')),aid:val('aid'),stoppedReason:val('stoppedReason'),notes:val('notes'),savedAt:new Date().toISOString()};
+}
+function compareWithPrevious(item){const prior=history.filter(x=>x.id!==item.id).sort((a,b)=>a.date.localeCompare(b.date));return prior.length?prior[prior.length-1]:null}
+function showResult(item){current=item;$('resultCard').classList.remove('hidden');$('resultDistance').textContent=fmt(item.distanceM,1);$('resultFeet').textContent=fmt(item.distanceFt,0)+' ft';$('rSpo2').textContent=item.lowSpo2==null?'Not recorded':item.lowSpo2+'%';$('rHr').textContent=item.startHr!=null&&item.endHr!=null?item.startHr+' → '+item.endHr+' bpm':'Not recorded';$('rDyspnea').textContent=item.dyspneaBefore!=null&&item.dyspneaAfter!=null?item.dyspneaBefore+' → '+item.dyspneaAfter:'Not recorded';$('rFatigue').textContent=item.fatigueBefore!=null&&item.fatigueAfter!=null?item.fatigueBefore+' → '+item.fatigueAfter:'Not recorded';$('rOxygen').textContent=item.oxygen==='yes'?(item.flow!=null?item.flow+' L/min':'Used'):'Room air / none recorded';$('rStops').textContent=String(item.stops??0);
+ const p=compareWithPrevious(item); if(p){const delta=item.distanceM-p.distanceM;$('changeBox').classList.remove('hidden');$('changeBox').innerHTML='<strong>Change from previous saved test:</strong> '+(delta>=0?'+':'')+fmt(delta,1)+' m ('+fmt(delta/0.3048,0)+' ft) compared with '+fmt(p.distanceM,1)+' m on '+p.date+'. Keep the course, oxygen, walking aid, and protocol as consistent as possible when assessing change.'}else $('changeBox').classList.add('hidden');
+ $('resultCard').scrollIntoView({behavior:'smooth',block:'start'});
+}
+$('calculate').addEventListener('click',()=>{try{showResult(collect());toast('Result calculated')}catch(e){toast(e.message)}});
+$('save').addEventListener('click',()=>{if(!current){try{current=collect()}catch(e){toast(e.message);return}};const idx=history.findIndex(x=>x.id===current.id);if(idx>=0)history[idx]=current;else history.push(current);history.sort((a,b)=>a.date.localeCompare(b.date));persist();renderCompare();toast('Assessment saved')});
+function formatShare(x){let s='COPD Compass Care – 6-Minute Walk Test\nDate: '+x.date+'\n6MWD: '+fmt(x.distanceM,1)+' m ('+fmt(x.distanceFt,0)+' ft)';if(x.courseM!=null)s+='\nCourse: '+fmt(x.courseM,1)+' m';s+='\nTest: '+x.testNo+'\nCompleted 6 minutes: '+(x.completed==='yes'?'Yes':'No'+(x.walkTime!=null?' ('+fmt(x.walkTime,1)+' min)':''));s+='\nStops/rests: '+(x.stops??0);if(x.oxygen==='yes')s+='\nOxygen: '+(x.flow!=null?x.flow+' L/min':'Used')+(x.delivery?' via '+x.delivery:'');else s+='\nOxygen: None';if(x.startSpo2!=null||x.lowSpo2!=null||x.endSpo2!=null)s+='\nSpO₂: '+(x.startSpo2??'—')+'% start / '+(x.lowSpo2??'—')+'% lowest / '+(x.endSpo2??'—')+'% end';if(x.startHr!=null||x.endHr!=null)s+='\nHR: '+(x.startHr??'—')+' → '+(x.endHr??'—')+' bpm';if(x.dyspneaBefore!=null||x.dyspneaAfter!=null)s+='\nDyspnea: '+(x.dyspneaBefore??'—')+' → '+(x.dyspneaAfter??'—');if(x.fatigueBefore!=null||x.fatigueAfter!=null)s+='\nFatigue: '+(x.fatigueBefore??'—')+' → '+(x.fatigueAfter??'—');if(x.aid)s+='\nWalking aid: '+x.aid;if(x.stoppedReason)s+='\nLimitation: '+x.stoppedReason;if(x.notes)s+='\nNotes: '+x.notes;s+='\n\n6MWD is the primary outcome of the 6MWT. Testing conditions should be kept consistent when comparing results.';return s}
+$('copy').addEventListener('click',async()=>{if(!current){toast('Calculate a result first');return}try{await navigator.clipboard.writeText(formatShare(current));toast('Result copied')}catch(e){toast('Copy is unavailable on this device')}});
+$('share').addEventListener('click',async()=>{if(!current){toast('Calculate a result first');return}const text=formatShare(current);if(navigator.share){try{await navigator.share({title:'6-Minute Walk Test Result',text})}catch(e){} }else{try{await navigator.clipboard.writeText(text);toast('Result copied for sharing')}catch(e){toast('Sharing is unavailable')}}});
+$('clearCurrent').addEventListener('click',()=>{document.querySelectorAll('input,textarea').forEach(el=>{if(el.type==='date')el.value=today();else if(el.type!=='file')el.value=''});$('testNo').value='1';$('standardized').value='yes';$('completed').value='yes';$('distanceUnit').value='m';$('courseUnit').value='m';$('stops').value='0';$('oxygen').value='no';$('delivery').value='';$('aid').value='None';$('resultCard').classList.add('hidden');current=null;$('oxygen').dispatchEvent(new Event('change'));toast('Current assessment cleared')});
+function renderHistory(){const h=$('history');if(!history.length){h.innerHTML='<div class="fine">No saved assessments yet.</div>';$('chartWrap').classList.add('hidden');return}h.innerHTML=history.slice().reverse().map(x=>`<div class="histitem"><div class="histtop"><div><div class="histdate">${escapeHtml(x.date)}</div><div class="histmeta">${escapeHtml(x.testNo)} • ${x.completed==='yes'?'6 minutes completed':(x.walkTime??'—')+' min'} • ${x.stops??0} stop(s)</div></div><div class="histdistance">${fmt(x.distanceM,1)} m</div></div><div class="histmeta">${x.oxygen==='yes'?'O₂ '+(x.flow!=null?x.flow+' L/min':'used'):'No supplemental O₂'}${x.lowSpo2!=null?' • nadir SpO₂ '+x.lowSpo2+'%':''}${x.aid&&x.aid!=='None'?' • '+escapeHtml(x.aid):''}</div><div class="histactions"><button class="small" onclick="viewHistory('${x.id}')">View</button><button class="small" onclick="selectCompare('${x.id}')">Compare</button><button class="small" onclick="shareHistory('${x.id}')">Share</button><button class="small danger" onclick="deleteHistory('${x.id}')">Delete</button></div></div>`).join('');drawChart()}
+function escapeHtml(s){return String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+window.viewHistory=id=>{const x=history.find(a=>a.id===id);if(x)showResult(x)};
+window.deleteHistory=id=>{if(confirm('Delete this saved assessment?')){history=history.filter(x=>x.id!==id);persist();renderCompare();toast('Assessment deleted')}};
+window.shareHistory=async id=>{const x=history.find(a=>a.id===id);if(!x)return;const text=formatShare(x);if(navigator.share){try{await navigator.share({title:'6-Minute Walk Test Result',text})}catch(e){}}else{try{await navigator.clipboard.writeText(text);toast('Result copied')}}};
+window.selectCompare=id=>{const x=history.find(a=>a.id===id);if(!x)return;const sorted=history.slice().sort((a,b)=>a.date.localeCompare(b.date));const i=sorted.findIndex(a=>a.id===id);const p=sorted[i-1]||null;renderCompare(x,p)};
+function renderCompare(a=null,b=null){const c=$('compareContent');if(!a){$('compareCard').classList.add('hidden');return}$('compareCard').classList.remove('hidden');if(!b){c.innerHTML='<div class="comparebox"><strong>'+escapeHtml(a.date)+'</strong><br>'+fmt(a.distanceM,1)+' m. No earlier saved assessment is available for comparison.</div>';return}const d=a.distanceM-b.distanceM;const ds=a.lowSpo2!=null&&b.lowSpo2!=null?a.lowSpo2-b.lowSpo2:null;c.innerHTML='<div class="comparebox"><strong>'+escapeHtml(b.date)+' → '+escapeHtml(a.date)+'</strong><div class="resultgrid" style="margin-top:10px"><div class="metric"><div class="k">6MWD change</div><div class="v delta '+(d>=0?'good':'bad')+'">'+(d>=0?'+':'')+fmt(d,1)+' m</div></div><div class="metric"><div class="k">Distance</div><div class="v">'+fmt(b.distanceM,1)+' → '+fmt(a.distanceM,1)+' m</div></div><div class="metric"><div class="k">Lowest SpO₂</div><div class="v">'+(b.lowSpo2??'—')+'% → '+(a.lowSpo2??'—')+'%'+(ds!=null?' ('+(ds>=0?'+':'')+ds+' points)':'')+'</div></div><div class="metric"><div class="k">Stops</div><div class="v">'+(b.stops??0)+' → '+(a.stops??0)+'</div></div></div><p class="fine">A change in 6MWD can be affected by course length, oxygen, walking aid, encouragement, and other protocol differences. Compare like with like whenever possible.</p></div>'}
+$('clearHistory').addEventListener('click',()=>{if(!history.length){toast('History is already empty');return}if(confirm('Delete all saved 6MWT assessments?')){history=[];persist();$('compareCard').classList.add('hidden');toast('Saved history cleared')}});
+$('backup').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({app:'COPD Compass Care 6MWT',version:1,history},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='copd-compass-care-6mwt-backup.json';a.click();URL.revokeObjectURL(a.href);toast('Backup created')});
+$('restore').addEventListener('click',()=>$('restoreFile').click());$('restoreFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!Array.isArray(o.history))throw Error();history=o.history;persist();toast('Backup restored')}catch(err){toast('Invalid backup file')}};r.readAsText(f);e.target.value='' });
+function drawChart(){if(history.length<2){$('chartWrap').classList.add('hidden');return}$('chartWrap').classList.remove('hidden');const svg=$('chart');svg.innerHTML='';const W=600,H=220,pad=40;const xs=history.map((_,i)=>pad+i*((W-2*pad)/Math.max(1,history.length-1)));const ys=history.map(x=>x.distanceM);const min=Math.min(...ys),max=Math.max(...ys),range=Math.max(20,max-min);const y=v=>H-pad-(v-(min-range*.1))/(range*1.2)*(H-2*pad);const NS='http://www.w3.org/2000/svg';const line=document.createElementNS(NS,'polyline');line.setAttribute('fill','none');line.setAttribute('stroke','currentColor');line.setAttribute('stroke-width','3');line.setAttribute('points',history.map((x,i)=>xs[i]+','+y(x.distanceM)).join(' '));svg.appendChild(line);history.forEach((x,i)=>{const c=document.createElementNS(NS,'circle');c.setAttribute('cx',xs[i]);c.setAttribute('cy',y(x.distanceM));c.setAttribute('r','5');c.setAttribute('fill','currentColor');svg.appendChild(c);const t=document.createElementNS(NS,'text');t.setAttribute('x',xs[i]);t.setAttribute('y',H-12);t.setAttribute('text-anchor','middle');t.setAttribute('font-size','11');t.setAttribute('fill','currentColor');t.textContent=x.date.slice(5);svg.appendChild(t)});const yt=document.createElementNS(NS,'text');yt.setAttribute('x','5');yt.setAttribute('y','18');yt.setAttribute('font-size','12');yt.setAttribute('fill','currentColor');yt.textContent=Math.round(max)+' m';svg.appendChild(yt)}
+$('themeBtn').addEventListener('click',()=>{document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark'});
+renderHistory();
+</script>
+<div class="ccc-next"><a href="copd_compass_pft_fev1_tracker.html">← PFT / FEV₁</a><a class="primary" href="copd_compass_spo2_oxygen_tracker.html">Next: SpO₂ / Oxygen →</a></div>
+</body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Hospital / ER Tracker – COPD Compass Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#233F94;--purple:#68267E;--bg:#F5F6FA;--card:#FFF;--ink:#1B1F2E;--muted:#555B70;--line:#D6DAE6;--accent:var(--navy);--accent-ink:#FFF;--note-bg:#F1E9F5;--note-line:var(--purple)}
+@media(prefers-color-scheme:dark){:root{--bg:#111521;--card:#1A1F2D;--ink:#F2F4FA;--muted:#B8BDCC;--line:#353C50;--note-bg:#2A2030}}
+[data-theme=dark]{--bg:#111521;--card:#1A1F2D;--ink:#F2F4FA;--muted:#B8BDCC;--line:#353C50;--note-bg:#2A2030}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:17px;line-height:1.4}.wrap{max-width:640px;margin:auto;padding:18px}.brand{font-weight:700;color:var(--purple);font-size:15px}.top{display:flex;justify-content:space-between;gap:12px;align-items:start}.theme{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:9px;padding:7px 10px;cursor:pointer}h1{font-size:30px;line-height:1.05;margin:8px 0}.lead{color:var(--muted);margin:0 0 18px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0}.card h2{font-size:21px;margin:0 0 12px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}label{display:block;font-weight:700;margin-bottom:6px}input,select,textarea{width:100%;min-height:48px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);padding:10px 12px;font:inherit}textarea{min-height:96px;resize:vertical}.muted{color:var(--muted);font-size:15px}.opts{display:grid;gap:8px}.opt{display:flex;gap:10px;align-items:flex-start;border:2px solid var(--line);border-radius:10px;padding:11px;cursor:pointer}.opt input{width:auto;min-height:auto;margin-top:4px}.buttons{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.btn{min-height:48px;border:2px solid var(--accent);border-radius:10px;background:var(--card);color:var(--accent);font:inherit;font-weight:700;cursor:pointer;padding:10px}.btn.primary{background:var(--accent);color:var(--accent-ink)}.btn.purple{border-color:var(--purple);color:var(--purple)}.result{text-align:center}.result .big{font-size:54px;font-weight:700;color:var(--navy);line-height:1}.result .unit{color:var(--muted)}table{width:100%;border-collapse:collapse}th,td{text-align:left;border-bottom:1px solid var(--line);padding:9px 5px}th{color:var(--muted);font-size:14px}.note{background:var(--note-bg);border-left:4px solid var(--note-line);padding:12px;border-radius:8px}.hist{border:1px solid var(--line);border-radius:10px;padding:12px;margin:9px 0}.histhead{display:flex;justify-content:space-between;gap:10px}.tag{font-size:13px;padding:3px 7px;border:1px solid var(--line);border-radius:99px;color:var(--muted)}.hidden{display:none}.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:10px;opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1}.fine{font-size:13px;color:var(--muted)}svg{width:100%;height:180px;display:block}.danger{border-color:#a33!important;color:#a33!important}@media(max-width:480px){.grid{grid-template-columns:1fr}.full{grid-column:auto}.buttons{grid-template-columns:1fr}h1{font-size:27px}}
+</style>
+
+<style id="ccc-navigation-style">
+.ccc-nav{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:0 0 16px;padding:10px 11px;background:var(--card,#fff);border:1px solid var(--line,#D6DAE6);border-radius:12px;box-shadow:0 2px 8px rgba(27,31,46,.05)}
+.ccc-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:6px 9px;border:1px solid var(--line,#D6DAE6);border-radius:8px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;font-size:13px;line-height:1.1;background:var(--card,#fff)}
+.ccc-nav a:hover{filter:brightness(.97)}
+.ccc-nav a.active{background:var(--navy,#233F94);border-color:var(--navy,#233F94);color:#fff}
+.ccc-nav .home{color:var(--purple,#68267E);border-color:var(--purple,#68267E)}
+.ccc-nav-label{width:100%;font-size:12px;font-weight:700;color:var(--muted,#555B70);margin:0 0 1px 2px;letter-spacing:.2px}
+.ccc-next{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:16px 0 4px;padding-top:14px;border-top:1px solid var(--line,#D6DAE6)}
+.ccc-next a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:8px 12px;border:2px solid var(--navy,#233F94);border-radius:9px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;background:var(--card,#fff)}
+.ccc-next a.primary{background:var(--navy,#233F94);color:#fff}
+@media(max-width:520px){.ccc-nav{gap:6px}.ccc-nav a{font-size:12px;padding:6px 8px}.ccc-next{display:grid;grid-template-columns:1fr}.ccc-next a{width:100%}}
+</style>
+</head>
+<body>
+<nav class="ccc-nav" aria-label="COPD Compass Care assessments">
+<div class="ccc-nav-label">COPD Compass Care Assessments</div>
+<a class="home" href="index.html">Assessment Center</a>
+<a href="copd_compass_bode_index.html">BODE Index</a>
+<a href="copd_compass_weight_bmi_tracker.html">Weight / BMI</a>
+<a href="copd_compass_pft_fev1_tracker.html">PFT / FEV₁</a>
+<a href="copd_compass_6mwt_tracker.html">6-Minute Walk</a>
+<a href="copd_compass_spo2_oxygen_tracker.html">SpO₂ / Oxygen</a>
+<a href="copd_compass_symptoms_tracker.html">Symptoms</a>
+<a href="copd_compass_exacerbation_tracker.html">Exacerbations</a>
+<a href="copd_compass_hospital_er_tracker.html" class="active">Hospital / ER</a>
+<a href="copd_compass_medication_tracker.html">Medications</a>
+<a href="copd_compass_hagos_tracker.html">HAGOS</a>
+</nav>
+<div class="wrap">
+<div class="top"><div><div class="brand">COPD COMPASS CARE</div><h1>Hospital / ER Tracker</h1></div><button class="theme" id="themeBtn" type="button">Dark mode</button></div>
+<p class="lead">Keep a structured record of emergency department visits, hospital admissions, ICU care, respiratory support, testing, treatment, and discharge details.</p>
+<div class="card"><h2>Visit information</h2><div class="grid">
+<div><label for="date">Arrival date</label><input id="date" type="date"></div><div><label for="arrival">Arrival time</label><input id="arrival" type="time"></div>
+<div><label for="facility">Facility</label><input id="facility" placeholder="Hospital / medical center"></div><div><label for="type">Encounter</label><select id="type"><option>Emergency department only</option><option>ED → hospital admission</option><option>Hospital admission</option><option>ICU admission</option><option>Observation</option><option>Other</option></select></div>
+<div><label for="discharge">Discharge date</label><input id="discharge" type="date"></div><div><label for="los">Length of stay (days)</label><input id="los" type="number" min="0" step="0.1"></div>
+<div class="full"><label for="reason">Primary reason for visit</label><input id="reason" placeholder="e.g., worsening dyspnea, low SpO₂, chest pain"></div>
+</div></div>
+<div class="card"><h2>Respiratory status</h2><div class="grid">
+<div><label for="spo2">Lowest SpO₂ (%)</label><input id="spo2" type="number" min="0" max="100" step="1"></div><div><label for="o2">Highest oxygen flow (L/min)</label><input id="o2" type="number" min="0" step="0.1"></div>
+<div><label for="device">Highest respiratory support</label><select id="device"><option>None / room air</option><option>Nasal cannula</option><option>Venturi mask</option><option>High-flow nasal oxygen</option><option>BiPAP / NIV</option><option>CPAP</option><option>Invasive mechanical ventilation</option><option>Other</option></select></div>
+<div><label for="fio2">Highest FiO₂ (%)</label><input id="fio2" type="number" min="0" max="100" step="1"></div>
+<div><label for="hr">Highest heart rate</label><input id="hr" type="number" min="0" step="1"></div><div><label for="rr">Highest respiratory rate</label><input id="rr" type="number" min="0" step="1"></div>
+<div><label for="pco2">Highest / relevant PaCO₂ (mmHg)</label><input id="pco2" type="number" step="0.1"></div><div><label for="ph">Lowest / relevant pH</label><input id="ph" type="number" min="6" max="8" step="0.01"></div>
+<div><label for="abg">ABG performed?</label><select id="abg"><option>Not recorded</option><option>No</option><option>Yes</option></select></div><div><label for="nivhours">NIV duration (hours)</label><input id="nivhours" type="number" min="0" step="0.5"></div>
+</div></div>
+<div class="card"><h2>Testing & findings</h2><div class="grid">
+<div><label for="cxr">Chest imaging</label><select id="cxr"><option>Not recorded</option><option>No acute finding</option><option>Pneumonia / infiltrate</option><option>Atelectasis</option><option>Pulmonary edema</option><option>Pneumothorax</option><option>Other</option></select></div>
+<div><label for="pe">PE evaluated?</label><select id="pe"><option>Not recorded</option><option>No</option><option>Yes, negative</option><option>Yes, positive</option></select></div>
+<div><label for="infection">Infection identified?</label><select id="infection"><option>Not recorded</option><option>No</option><option>Possible</option><option>Yes</option></select></div>
+<div><label for="cardiac">Cardiac contributor?</label><select id="cardiac"><option>Not recorded</option><option>No</option><option>Possible</option><option>Yes</option></select></div>
+<div class="full"><label for="diagnosis">Discharge / final diagnoses</label><textarea id="diagnosis" placeholder="Record diagnoses exactly as documented when possible."></textarea></div>
+</div></div>
+<div class="card"><h2>Treatment</h2><div class="grid">
+<div><label for="steroid">Systemic corticosteroid</label><select id="steroid"><option>Not recorded</option><option>No</option><option>Yes</option></select></div><div><label for="antibiotic">Antibiotic</label><select id="antibiotic"><option>Not recorded</option><option>No</option><option>Yes</option></select></div>
+<div><label for="neb">Bronchodilator escalation</label><select id="neb"><option>Not recorded</option><option>No</option><option>Yes</option></select></div><div><label for="vent">Mechanical ventilation</label><select id="vent"><option>None</option><option>NIV / BiPAP</option><option>Invasive ventilation</option></select></div>
+<div><label for="otherTx">Other major treatment</label><input id="otherTx" placeholder="e.g., diuresis, anticoagulation"></div><div><label for="dischargeO2">Oxygen at discharge</label><input id="dischargeO2" placeholder="e.g., 2 L/min continuous"></div>
+</div></div>
+<div class="card"><h2>Outcome</h2><div class="opts">
+<label class="opt"><input type="checkbox" id="icu"> ICU care during this encounter</label>
+<label class="opt"><input type="checkbox" id="intub"> Intubation / invasive ventilation</label>
+<label class="opt"><input type="checkbox" id="readmit"> Returned to ED / readmitted soon after discharge</label>
+</div><div style="margin-top:12px"><label for="followup">Follow-up plan / important discharge instructions</label><textarea id="followup"></textarea></div></div>
+<div class="card"><h2>Notes</h2><textarea id="notes" placeholder="Anything else you want preserved about this encounter."></textarea></div>
+<div class="card"><h2>Actions</h2><div class="buttons"><button class="btn primary" id="calculate">Create summary</button><button class="btn" id="save">Save assessment</button><button class="btn" id="share">Share result</button><button class="btn" id="copy">Copy result</button><button class="btn" id="backup">Backup history</button><button class="btn" id="restore">Restore history</button><button class="btn" id="clear">Clear current</button><button class="btn danger" id="clearHistory">Clear saved history</button></div><input id="file" type="file" accept="application/json" class="hidden"></div>
+<div class="card hidden" id="resultCard"><div class="result"><div class="big" id="resultType">ED / Hospital</div><div class="unit" id="resultDates"></div></div><table><tbody id="resultTable"></tbody></table><div class="note" style="margin-top:14px">This tracker records what happened during an acute-care encounter. It does not diagnose the cause of the event or determine whether hospitalization was necessary.</div></div>
+<div class="card"><h2>Saved assessments</h2><div id="history"></div><div id="empty" class="muted">No saved hospital or ER encounters yet.</div></div>
+<div class="card"><h2>Trend</h2><svg id="chart" viewBox="0 0 600 180" role="img" aria-label="Hospital and emergency department encounter trend"></svg><div id="trendText" class="muted"></div></div>
+<div class="card"><h2>Clinical context</h2><p class="muted">Hospital and emergency visits can be important markers of COPD disease activity, but an acute-care encounter may have several possible causes. Record objective findings, respiratory support, treatment, diagnoses, and discharge status so your clinician can interpret the event in context.</p><p class="fine">COPD Compass Care tracking tool. Follow your clinician's instructions for urgent or emergency symptoms. In an emergency, seek emergency medical care rather than relying on this tracker.</p></div>
+</div><div id="toast" class="toast" role="status"></div>
+<script>
+const KEY='ccc_hospital_er_v1';
+const ids=['date','arrival','facility','type','discharge','los','reason','spo2','o2','device','fio2','hr','rr','pco2','ph','abg','nivhours','cxr','pe','infection','cardiac','diagnosis','steroid','antibiotic','neb','vent','otherTx','dischargeO2','icu','intub','readmit','followup','notes'];
+const $=id=>document.getElementById(id); const toast=m=>{const t=$('toast');t.textContent=m;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)};
+const val=id=>{const e=$(id); return e.type==='checkbox'?e.checked:e.value};
+function data(){const o={};ids.forEach(id=>o[id]=val(id));o.id=crypto.randomUUID?.()||String(Date.now()+Math.random());o.createdAt=new Date().toISOString();return o}
+function setData(o){ids.forEach(id=>{if(!(id in o))return;const e=$(id);if(e.type==='checkbox')e.checked=!!o[id];else e.value=o[id]??''});renderResult(o)}
+function history(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return[]}}
+function saveHist(a){const h=history();h.unshift(a);localStorage.setItem(KEY,JSON.stringify(h.slice(0,200)));renderHistory();renderChart();toast('Assessment saved')}
+function fmtDate(s){if(!s)return 'Not recorded';try{return new Date(s+'T12:00:00').toLocaleDateString(undefined,{month:'short',day:'numeric',year:'numeric'})}catch{return s}}
+function renderResult(o=data()){
+ $('resultCard').classList.remove('hidden'); $('resultType').textContent=o.type||'Encounter'; $('resultDates').textContent=(fmtDate(o.date))+(o.discharge?' → '+fmtDate(o.discharge):'');
+ const rows=[['Facility',o.facility||'Not recorded'],['Reason',o.reason||'Not recorded'],['Lowest SpO₂',o.spo2?o.spo2+'%':'Not recorded'],['Highest O₂',o.o2?o.o2+' L/min':'Not recorded'],['Highest support',o.device||'Not recorded'],['PaCO₂',o.pco2?o.pco2+' mmHg':'Not recorded'],['pH',o.ph||'Not recorded'],['NIV duration',o.nivhours?o.nivhours+' hr':'Not recorded'],['Length of stay',o.los?o.los+' days':'Not recorded'],['Discharge oxygen',o.dischargeO2||'Not recorded']];$('resultTable').innerHTML=rows.map(r=>`<tr><th>${esc(r[0])}</th><td>${esc(r[1])}</td></tr>`).join('');
+}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function renderHistory(){const h=history();$('empty').classList.toggle('hidden',h.length>0);$('history').innerHTML=h.map((a,i)=>`<div class="hist"><div class="histhead"><strong>${esc(a.type||'Encounter')}</strong><span class="tag">${esc(fmtDate(a.date))}</span></div><div class="muted">${esc(a.facility||'Facility not recorded')} · ${esc(a.reason||'No reason recorded')}</div><div style="margin-top:8px"><button class="btn" onclick="viewItem(${i})">View</button> <button class="btn" onclick="shareItem(${i})">Share</button> <button class="btn danger" onclick="deleteItem(${i})">Delete</button></div></div>`).join('')}
+window.viewItem=i=>{const a=history()[i];setData(a);scrollTo({top:0,behavior:'smooth'});toast('Assessment loaded')};
+window.deleteItem=i=>{const h=history();h.splice(i,1);localStorage.setItem(KEY,JSON.stringify(h));renderHistory();renderChart();toast('Assessment deleted')};
+function text(o){const lines=['COPD Compass Care – Hospital / ER Assessment','Date: '+fmtDate(o.date),'Encounter: '+(o.type||'Not recorded'),'Facility: '+(o.facility||'Not recorded'),'Reason: '+(o.reason||'Not recorded'),'Lowest SpO₂: '+(o.spo2?o.spo2+'%':'Not recorded'),'Highest oxygen: '+(o.o2?o.o2+' L/min':'Not recorded'),'Highest respiratory support: '+(o.device||'Not recorded'),'PaCO₂: '+(o.pco2?o.pco2+' mmHg':'Not recorded'),'pH: '+(o.ph||'Not recorded'),'Length of stay: '+(o.los?o.los+' days':'Not recorded'),'Discharge oxygen: '+(o.dischargeO2||'Not recorded'),'Diagnoses: '+(o.diagnosis||'Not recorded'),'Notes: '+(o.notes||'')];return lines.join('\n')}
+async function shareItem(i){const a=history()[i];const t=text(a);if(navigator.share)try{await navigator.share({title:'COPD Compass Care – Hospital / ER',text:t})}catch{}else{await navigator.clipboard?.writeText(t);toast('Result copied')}}
+$('calculate').onclick=()=>renderResult();$('save').onclick=()=>saveHist(data());$('share').onclick=()=>shareItemTemp();$('copy').onclick=async()=>{await navigator.clipboard?.writeText(text(data()));toast('Result copied')};
+async function shareItemTemp(){const t=text(data());if(navigator.share)try{await navigator.share({title:'COPD Compass Care – Hospital / ER',text:t})}catch{}else{await navigator.clipboard?.writeText(t);toast('Result copied')}}
+$('clear').onclick=()=>{if(confirm('Clear the current assessment?')){ids.forEach(id=>{const e=$(id);if(e.type==='checkbox')e.checked=false;else e.value=''});$('date').value=new Date().toISOString().slice(0,10);$('resultCard').classList.add('hidden');toast('Current assessment cleared')}};
+$('clearHistory').onclick=()=>{if(confirm('Delete all saved hospital/ER history? This cannot be undone.')){localStorage.removeItem(KEY);renderHistory();renderChart();toast('Saved history cleared')}};
+$('backup').onclick=()=>{const b=new Blob([JSON.stringify(history(),null,2)],{type:'application/json'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='copd-compass-hospital-er-backup.json';a.click();URL.revokeObjectURL(u)};
+$('restore').onclick=()=>$('file').click();$('file').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const h=JSON.parse(await f.text());if(!Array.isArray(h))throw Error();localStorage.setItem(KEY,JSON.stringify(h));renderHistory();renderChart();toast('History restored')}catch{toast('Invalid backup file')}e.target.value=''};
+function renderChart(){const h=history().slice().reverse();const svg=$('chart');if(!h.length){svg.innerHTML='';$('trendText').textContent='Save encounters to see your history here.';return}const w=600,H=180,p=30;svg.innerHTML='';const ns='http://www.w3.org/2000/svg';const x=i=>p+(w-2*p)*(h.length===1?.5:i/(h.length-1));const y=v=>H-p-(H-2*p)*(v/Math.max(1,Math.max(...h.map(a=>Number(a.los)||0),1)));h.forEach((a,i)=>{const c=document.createElementNS(ns,'circle');c.setAttribute('cx',x(i));c.setAttribute('cy',y(Number(a.los)||0));c.setAttribute('r','5');svg.appendChild(c);if(i){const l=document.createElementNS(ns,'line');l.setAttribute('x1',x(i-1));l.setAttribute('y1',y(Number(h[i-1].los)||0));l.setAttribute('x2',x(i));l.setAttribute('y2',y(Number(a.los)||0));l.setAttribute('stroke','currentColor');l.setAttribute('stroke-width','2');svg.insertBefore(l,svg.firstChild)}});$('trendText').textContent=`${h.length} saved encounter${h.length===1?'':'s'} · chart shows recorded hospital length of stay when available.`}
+$('themeBtn').onclick=()=>{const d=document.documentElement.dataset.theme==='dark';document.documentElement.dataset.theme=d?'':'dark';$('themeBtn').textContent=d?'Dark mode':'Light mode'};
+$('date').value=new Date().toISOString().slice(0,10);renderHistory();renderChart();
+</script><div class="ccc-next"><a href="copd_compass_exacerbation_tracker.html">← Exacerbations</a><a class="primary" href="copd_compass_medication_tracker.html">Next: Medications →</a></div>
+</body></html>

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#233F94"><title>BODE Index – COPD Compass Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#233F94;--purple:#68267E;--bg:#F5F6FA;--card:#fff;--ink:#1B1F2E;--muted:#555B70;--line:#D6DAE6;--accent:var(--navy);--accent-ink:#fff;--note-bg:#F1E9F5;--note-line:var(--purple);--good:#236B3A}
+@media(prefers-color-scheme:dark){:root{--bg:#111521;--card:#1A2030;--ink:#F4F6FC;--muted:#B7BDCF;--line:#343B4E;--note-bg:#2A2030}}
+[data-theme=dark]{--bg:#111521;--card:#1A2030;--ink:#F4F6FC;--muted:#B7BDCF;--line:#343B4E;--note-bg:#2A2030}[data-theme=light]{--bg:#F5F6FA;--card:#fff;--ink:#1B1F2E;--muted:#555B70;--line:#D6DAE6;--note-bg:#F1E9F5}
+*{box-sizing:border-box}html{font-family:'Atkinson Hyperlegible',system-ui,sans-serif;background:var(--bg);color:var(--ink)}body{margin:0;background:var(--bg);line-height:1.45}.wrap{max-width:640px;margin:0 auto;padding:18px 14px 40px}.toggle{display:flex;justify-content:flex-end}.header{padding:8px 2px 16px}.brand{font-weight:700;color:var(--purple);font-size:15px;letter-spacing:.2px}.header h1{font-size:30px;line-height:1.12;margin:5px 0 8px;color:var(--navy)}.header p{margin:0;color:var(--muted);font-size:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:12px 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}h2{font-size:20px;margin:0 0 13px;color:var(--navy)}h3{font-size:17px;margin:17px 0 9px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}label{display:block;font-weight:700;font-size:15px;margin:0 0 6px}.help{display:block;color:var(--muted);font-size:13px;font-weight:400;margin-top:3px}input,select{width:100%;min-height:48px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);padding:10px 12px;font:inherit;font-size:16px}.btns{display:grid;grid-template-columns:1fr 1fr;gap:9px}button{min-height:48px;border:2px solid var(--accent);border-radius:10px;background:var(--card);color:var(--accent);font:700 16px inherit;padding:9px 12px;cursor:pointer}button.primary{background:var(--accent);color:var(--accent-ink)}button:hover{filter:brightness(.97)}button.small{min-height:40px;font-size:14px}.score{text-align:center;padding:7px 0 12px}.score .n{font-size:68px;line-height:.95;font-weight:700;color:var(--navy)}.score .unit{font-size:20px;color:var(--muted);font-weight:700}.subscore{color:var(--muted);font-size:15px;margin-top:4px}.resultgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{border:1px solid var(--line);border-radius:10px;padding:11px}.metric .k{font-size:13px;color:var(--muted)}.metric .v{font-size:20px;font-weight:700;margin-top:2px}.note{background:var(--note-bg);border-left:4px solid var(--note-line);padding:12px 13px;border-radius:8px;font-size:14px}.hidden{display:none!important}.next{border:2px solid var(--purple);background:var(--note-bg)}.next h2{color:var(--purple)}.nextlead{font-weight:700;font-size:17px;margin:0 0 12px}.steps{display:grid;gap:9px}.step{display:grid;grid-template-columns:42px 1fr auto;gap:10px;align-items:center;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--card)}.num{width:32px;height:32px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:700}.step strong{display:block}.step span{display:block;color:var(--muted);font-size:13px}.step a{display:inline-flex;align-items:center;justify-content:center;min-height:40px;border:2px solid var(--navy);border-radius:9px;padding:6px 10px;color:var(--navy);font-weight:700;text-decoration:none;white-space:nowrap}.step a:hover{background:var(--navy);color:#fff}.footer{font-size:12px;color:var(--muted);padding:5px 3px 0}.fine{font-size:13px;color:var(--muted)}@media(max-width:470px){.grid,.resultgrid{grid-template-columns:1fr}.step{grid-template-columns:36px 1fr}.step a{grid-column:2;justify-self:start}.btns{grid-template-columns:1fr}}
+</style>
+<style id="ccc-navigation-style">
+.ccc-nav{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:0 0 16px;padding:10px 11px;background:var(--card,#fff);border:1px solid var(--line,#D6DAE6);border-radius:12px;box-shadow:0 2px 8px rgba(27,31,46,.05)}
+.ccc-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:6px 9px;border:1px solid var(--line,#D6DAE6);border-radius:8px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;font-size:13px;line-height:1.1;background:var(--card,#fff)}
+.ccc-nav a:hover{filter:brightness(.97)}
+.ccc-nav a.active{background:var(--navy,#233F94);border-color:var(--navy,#233F94);color:#fff}
+.ccc-nav .home{color:var(--purple,#68267E);border-color:var(--purple,#68267E)}
+.ccc-nav-label{width:100%;font-size:12px;font-weight:700;color:var(--muted,#555B70);margin:0 0 1px 2px;letter-spacing:.2px}
+.ccc-next{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:16px 0 4px;padding-top:14px;border-top:1px solid var(--line,#D6DAE6)}
+.ccc-next a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:8px 12px;border:2px solid var(--navy,#233F94);border-radius:9px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;background:var(--card,#fff)}
+.ccc-next a.primary{background:var(--navy,#233F94);color:#fff}
+@media(max-width:520px){.ccc-nav{gap:6px}.ccc-nav a{font-size:12px;padding:6px 8px}.ccc-next{display:grid;grid-template-columns:1fr}.ccc-next a{width:100%}}
+</style>
+</head>
+<body>
+<nav class="ccc-nav" aria-label="COPD Compass Care assessments">
+<div class="ccc-nav-label">COPD Compass Care Assessments</div>
+<a class="home" href="index.html">Assessment Center</a>
+<a href="copd_compass_bode_index.html" class="active">BODE Index</a>
+<a href="copd_compass_weight_bmi_tracker.html">Weight / BMI</a>
+<a href="copd_compass_pft_fev1_tracker.html">PFT / FEV₁</a>
+<a href="copd_compass_6mwt_tracker.html">6-Minute Walk</a>
+<a href="copd_compass_spo2_oxygen_tracker.html">SpO₂ / Oxygen</a>
+<a href="copd_compass_symptoms_tracker.html">Symptoms</a>
+<a href="copd_compass_exacerbation_tracker.html">Exacerbations</a>
+<a href="copd_compass_hospital_er_tracker.html">Hospital / ER</a>
+<a href="copd_compass_medication_tracker.html">Medications</a>
+<a href="copd_compass_hagos_tracker.html">HAGOS</a>
+</nav><div class="wrap">
+<div class="toggle"><button id="themeBtn" type="button">Toggle theme</button></div>
+<header class="header"><div class="brand">COPD COMPASS CARE</div><h1>BODE Index</h1><p>Calculate the original BODE Index, then continue directly into the rest of your COPD assessment.</p></header>
+<section class="card" id="assessmentCenter">
+<h2>Choose what you want to assess</h2>
+<p class="nextlead">You do not need to complete BODE to use the rest of COPD Compass Care. Each tracker can be used independently, so start with the information you have.</p>
+<div class="steps">
+<div class="step"><div class="num">★</div><div><strong>BODE Index</strong><span>Calculate the multidimensional BODE Index when all four required measurements are available.</span></div><a href="#bodeAssessment">Start</a></div>
+<div class="step"><div class="num">1</div><div><strong>Weight &amp; BMI</strong><span>Track weight, BMI, weight change, and body-composition context.</span></div><a href="copd_compass_weight_bmi_tracker.html">Open</a></div>
+<div class="step"><div class="num">2</div><div><strong>mMRC Dyspnea</strong><span>Record breathlessness severity using the mMRC scale.</span></div><a href="#bodeAssessment" onclick="focusMmrc(event)">Open</a></div>
+<div class="step"><div class="num">3</div><div><strong>PFT / FEV₁</strong><span>Record lung function and longitudinal FEV₁ results.</span></div><a href="copd_compass_pft_fev1_tracker.html">Open</a></div>
+<div class="step"><div class="num">4</div><div><strong>6-Minute Walk Test</strong><span>Track distance, oxygen response, heart rate, and symptoms.</span></div><a href="copd_compass_6mwt_tracker.html">Open</a></div>
+<div class="step"><div class="num">5</div><div><strong>SpO₂ / Oxygen</strong><span>Track oxygen saturation, pulse, oxygen use, and context.</span></div><a href="copd_compass_spo2_oxygen_tracker.html">Open</a></div>
+<div class="step"><div class="num">6</div><div><strong>Symptoms</strong><span>Track breathlessness, air hunger, cough, sputum, fatigue, and other symptoms.</span></div><a href="copd_compass_symptoms_tracker.html">Open</a></div>
+<div class="step"><div class="num">7</div><div><strong>Exacerbations</strong><span>Record flare-ups, treatment escalation, urgent care, and hospitalization.</span></div><a href="copd_compass_exacerbation_tracker.html">Open</a></div>
+<div class="step"><div class="num">8</div><div><strong>Hospital / ER</strong><span>Keep a structured record of emergency and hospital events.</span></div><a href="copd_compass_hospital_er_tracker.html">Open</a></div>
+<div class="step"><div class="num">9</div><div><strong>Medications</strong><span>Track medications, adherence, technique, benefit, and side-effect concerns.</span></div><a href="copd_compass_medication_tracker.html">Open</a></div>
+<div class="step"><div class="num">10</div><div><strong>HAGOS</strong><span>Continue to the health-status questionnaire tracker.</span></div><a href="copd_compass_hagos_tracker.html">Open</a></div>
+</div>
+<div class="note" style="margin-top:13px"><strong>No BODE data? No problem.</strong> BODE is optional. If you do not have the required measurements, use any individual tracker above and return to BODE later if you obtain the missing information.</div>
+</section>
+<section class="card" id="bodeAssessment"><h2>BODE Index Calculator</h2><div class="grid">
+<div><label for="date">Assessment date</label><input id="date" type="date"></div>
+<div><label for="label">Assessment label <span class="help">Optional</span></label><input id="label" type="text" placeholder="Baseline, follow-up, etc."></div>
+<div><label for="bmi">BMI <span class="help">kg/m²</span></label><input id="bmi" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Enter BMI"></div>
+<div><label for="fev1">Post-bronchodilator FEV₁ <span class="help">% predicted</span></label><input id="fev1" type="number" min="0" max="200" step="0.1" inputmode="decimal" placeholder="Enter FEV₁ % predicted"></div>
+<div><label for="mmrc">mMRC dyspnea grade</label><select id="mmrc"><option value="">Select grade</option><option value="0">0</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></div>
+<div><label for="walk">6-minute walk distance <span class="help">meters</span></label><input id="walk" type="number" min="0" step="1" inputmode="decimal" placeholder="Enter distance"></div>
+</div></section>
+<section class="card"><h2>Calculate</h2><div class="btns"><button class="primary" id="calcBtn" type="button">Calculate BODE Index</button><button id="clearBtn" type="button">Clear current</button></div></section>
+<section class="card hidden" id="resultCard"><h2>Result</h2><div class="score"><div class="n" id="scoreBig">—</div><div class="unit">BODE Index</div><div class="subscore" id="quartile">—</div></div><div class="resultgrid"><div class="metric"><div class="k">BMI points</div><div class="v" id="pBmi">—</div></div><div class="metric"><div class="k">FEV₁ points</div><div class="v" id="pFev1">—</div></div><div class="metric"><div class="k">mMRC points</div><div class="v" id="pMmrc">—</div></div><div class="metric"><div class="k">6MWD points</div><div class="v" id="pWalk">—</div></div></div><div class="note" style="margin-top:12px">The BODE Index combines BMI, airflow obstruction, dyspnea, and exercise capacity. It is a clinical assessment tool, not a diagnosis or an individual life-expectancy calculator.</div><div class="btns" style="margin-top:12px"><button id="shareBtn" type="button">Share result</button><button id="copyBtn" type="button">Copy result</button></div></section>
+<section class="card next hidden" id="nextCard"><h2>Your next steps</h2><p class="nextlead">Your BODE Index is complete. Continue with any of the other COPD Compass Care trackers. You do not need to complete them in a particular order.</p><div class="steps">
+<div class="step"><div class="num">1</div><div><strong>Weight &amp; BMI</strong><span>Track weight, BMI, weight change, and body-composition context.</span></div><a href="copd_compass_weight_bmi_tracker.html">Open</a></div>
+<div class="step"><div class="num">2</div><div><strong>PFT / FEV₁</strong><span>Record lung function and longitudinal FEV₁ results.</span></div><a href="copd_compass_pft_fev1_tracker.html">Open</a></div>
+<div class="step"><div class="num">3</div><div><strong>6-Minute Walk Test</strong><span>Track distance, oxygen response, heart rate, and symptoms.</span></div><a href="copd_compass_6mwt_tracker.html">Open</a></div>
+<div class="step"><div class="num">4</div><div><strong>SpO₂ / Oxygen</strong><span>Track oxygen saturation, pulse, oxygen use, and context.</span></div><a href="copd_compass_spo2_oxygen_tracker.html">Open</a></div>
+<div class="step"><div class="num">5</div><div><strong>Symptoms</strong><span>Track breathlessness, air hunger, cough, sputum, fatigue, and other symptoms.</span></div><a href="copd_compass_symptoms_tracker.html">Open</a></div>
+<div class="step"><div class="num">6</div><div><strong>Exacerbations</strong><span>Record flare-ups, treatment escalation, urgent care, and hospitalization.</span></div><a href="copd_compass_exacerbation_tracker.html">Open</a></div>
+<div class="step"><div class="num">7</div><div><strong>Hospital / ER</strong><span>Keep a structured record of emergency and hospital events.</span></div><a href="copd_compass_hospital_er_tracker.html">Open</a></div>
+<div class="step"><div class="num">8</div><div><strong>Medications</strong><span>Track medications, adherence, technique, benefit, and side-effect concerns.</span></div><a href="copd_compass_medication_tracker.html">Open</a></div>
+<div class="step"><div class="num">9</div><div><strong>HAGOS</strong><span>Continue to the health-status questionnaire tracker.</span></div><a href="copd_compass_hagos_tracker.html">Open</a></div>
+</div><p class="fine" style="margin:13px 0 0">The BODE Index itself uses four inputs. The additional trackers are separate measurements and should not be treated as extra BODE components.</p></section>
+
+<footer class="footer">COPD Compass Care • Guided Support and Practical Care for COPD</footer>
+</div><div id="toast" class="hidden" style="position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:var(--card);padding:10px 14px;border-radius:999px;font-weight:700;z-index:20"></div>
+<script>
+const KEY='ccc_bode_v2';let current=null;const $=id=>document.getElementById(id);$('date').value=new Date().toISOString().slice(0,10);
+function points(){const bmi=+$('bmi').value,fev=+$('fev1').value,mm=+$('mmrc').value,walk=+$('walk').value;if(!(bmi>=0)||!(fev>=0)||!Number.isFinite(mm)||!(walk>=0)){toast('Enter all four BODE inputs first.');return null}const pb=bmi<=21?1:0,pf=fev>=65?0:fev>=50?1:fev>=36?2:3,pm=mm<=1?0:mm===2?1:mm===3?2:3,pw=walk>=350?0:walk>=250?1:walk>=150?2:3;return{pb,pf,pm,pw,total:pb+pf+pm+pw}}
+function quartile(s){return s<=2?'BODE quartile 1 (0–2)':s<=4?'BODE quartile 2 (3–4)':s<=6?'BODE quartile 3 (5–6)':'BODE quartile 4 (7–10)'}
+function calculate(){const p=points();if(!p)return;current={id:Date.now(),date:$('date').value,label:$('label').value.trim(),bmi:+$('bmi').value,fev1:+$('fev1').value,mmrc:+$('mmrc').value,walk:+$('walk').value,...p};$('scoreBig').textContent=p.total;$('quartile').textContent=quartile(p.total);$('pBmi').textContent=p.pb;$('pFev1').textContent=p.pf;$('pMmrc').textContent=p.pm;$('pWalk').textContent=p.pw;$('resultCard').classList.remove('hidden');$('nextCard').classList.remove('hidden');localStorage.setItem(KEY,JSON.stringify(current));$('nextCard').scrollIntoView({behavior:'smooth',block:'start'});}
+function resultText(){if(!current)return'';return 'COPD Compass Care — BODE Index Assessment\nDate: '+current.date+(current.label?'\nLabel: '+current.label:'')+'\nBODE Index: '+current.total+'\nBMI points: '+current.pb+'\nFEV₁ points: '+current.pf+'\nmMRC points: '+current.pm+'\n6MWD points: '+current.pw+'\n\nContinue with the COPD Compass Care assessment trackers for a broader longitudinal picture.'}
+async function share(){if(!current)return;if(navigator.share){try{await navigator.share({title:'COPD Compass Care BODE Index',text:resultText()});return}catch(e){}}copyText(resultText())}function copyText(t){navigator.clipboard?.writeText(t).then(()=>toast('Result copied.')).catch(()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('Result copied.')})}
+function focusMmrc(e){e.preventDefault();document.getElementById('bodeAssessment').scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>document.getElementById('mmrc').focus(),450)}
+function clearCurrent(){['bmi','fev1','walk','label'].forEach(id=>$(id).value='');$('mmrc').value='';$('date').value=new Date().toISOString().slice(0,10);current=null;$('resultCard').classList.add('hidden');$('nextCard').classList.add('hidden');toast('Current assessment cleared.')}
+$('calcBtn').onclick=calculate;$('clearBtn').onclick=clearCurrent;$('shareBtn').onclick=share;$('copyBtn').onclick=()=>copyText(resultText());$('themeBtn').onclick=()=>{const d=document.documentElement.getAttribute('data-theme');document.documentElement.setAttribute('data-theme',d==='dark'?'light':'dark')};function toast(m){const t=$('toast');t.textContent=m;t.classList.remove('hidden');clearTimeout(window.__t);window.__t=setTimeout(()=>t.classList.add('hidden'),2200)}
+</script><div class="ccc-next"><a href="index.html">← Assessment Center</a><a class="primary" href="copd_compass_weight_bmi_tracker.html">Next: Weight / BMI →</a></div>
+</body></html>

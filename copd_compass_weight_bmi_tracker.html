@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#233F94">
+<title>Weight / BMI Tracker – COPD Compass Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#233F94;--purple:#68267E;--bg:#F5F6FA;--card:#FFFFFF;--ink:#1B1F2E;--muted:#555B70;--line:#D6DAE6;--accent:var(--navy);--accent-ink:#FFFFFF;--note-bg:#F1E9F5;--note-line:var(--purple);--danger:#A52A2A;--good:#236B3A}
+@media(prefers-color-scheme:dark){:root{--bg:#111521;--card:#1A2030;--ink:#F4F6FC;--muted:#B7BDCF;--line:#343B4E;--note-bg:#2A2030}}
+[data-theme="dark"]{--bg:#111521;--card:#1A2030;--ink:#F4F6FC;--muted:#B7BDCF;--line:#343B4E;--note-bg:#2A2030}
+[data-theme="light"]{--bg:#F5F6FA;--card:#FFFFFF;--ink:#1B1F2E;--muted:#555B70;--line:#D6DAE6;--note-bg:#F1E9F5}
+*{box-sizing:border-box}html{font-family:'Atkinson Hyperlegible',system-ui,sans-serif;background:var(--bg);color:var(--ink)}body{margin:0;background:var(--bg);line-height:1.45}.wrap{max-width:640px;margin:0 auto;padding:18px 14px 40px}.header{padding:8px 2px 16px}.brand{font-weight:700;color:var(--purple);font-size:15px;letter-spacing:.2px}.header h1{font-size:30px;line-height:1.12;margin:5px 0 8px;color:var(--navy)}.header p{margin:0;color:var(--muted);font-size:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:12px 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}h2{font-size:20px;margin:0 0 13px;color:var(--navy)}h3{font-size:17px;margin:17px 0 9px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}label{display:block;font-weight:700;font-size:15px;margin:0 0 6px}.help{display:block;color:var(--muted);font-size:13px;font-weight:400;margin-top:3px}input,select,textarea{width:100%;min-height:48px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);padding:10px 12px;font:inherit;font-size:16px}textarea{min-height:92px;resize:vertical}.unitrow{display:grid;grid-template-columns:1fr 112px;gap:8px}.optgrid{display:grid;gap:8px}.opt{border:2px solid var(--line);border-radius:10px;padding:11px 12px;display:flex;gap:10px;align-items:flex-start;cursor:pointer;background:var(--card)}.opt input{width:auto;min-height:auto;margin-top:3px}.opt.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--card))}.btns{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btns.three{grid-template-columns:repeat(3,1fr)}button{min-height:48px;border:2px solid var(--accent);border-radius:10px;background:var(--card);color:var(--accent);font:700 16px inherit;padding:9px 12px;cursor:pointer}button:hover{filter:brightness(.97)}button.on,button.primary{background:var(--accent);color:var(--accent-ink)}button.danger{border-color:var(--danger);color:var(--danger)}button.small{min-height:40px;font-size:14px;padding:7px 10px}.score{text-align:center;padding:7px 0 12px}.score .n{font-size:64px;line-height:.95;font-weight:700;color:var(--navy)}.score .unit{font-size:20px;color:var(--muted);font-weight:700}.subscore{color:var(--muted);font-size:15px;margin-top:4px}.resultgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{border:1px solid var(--line);border-radius:10px;padding:11px}.metric .k{font-size:13px;color:var(--muted)}.metric .v{font-size:20px;font-weight:700;margin-top:2px}.note{background:var(--note-bg);border-left:4px solid var(--note-line);padding:12px 13px;border-radius:8px;color:var(--ink);font-size:14px}.fine{font-size:13px;color:var(--muted)}.hidden{display:none!important}.hist{display:grid;gap:9px}.histitem{border:1px solid var(--line);border-radius:10px;padding:11px}.histtop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.histdate{font-weight:700}.histdistance{font-weight:700;color:var(--navy)}.histmeta{color:var(--muted);font-size:13px;margin-top:4px}.histactions{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.comparebox{border:2px solid var(--purple);border-radius:10px;padding:12px}.delta.good{color:var(--good)}.delta.bad{color:var(--danger)}svg{width:100%;height:220px;display:block}.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:var(--card);padding:10px 14px;border-radius:999px;font-weight:700;z-index:20;box-shadow:0 5px 20px rgba(0,0,0,.2)}.footer{font-size:12px;color:var(--muted);padding:5px 3px 0}.toggle{display:flex;justify-content:flex-end;margin-bottom:8px}.toggle button{min-height:38px;font-size:13px}@media(max-width:470px){.grid,.resultgrid{grid-template-columns:1fr}.btns.three{grid-template-columns:1fr}.unitrow{grid-template-columns:1fr 100px}}
+</style>
+
+<style id="ccc-navigation-style">
+.ccc-nav{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:0 0 16px;padding:10px 11px;background:var(--card,#fff);border:1px solid var(--line,#D6DAE6);border-radius:12px;box-shadow:0 2px 8px rgba(27,31,46,.05)}
+.ccc-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:6px 9px;border:1px solid var(--line,#D6DAE6);border-radius:8px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;font-size:13px;line-height:1.1;background:var(--card,#fff)}
+.ccc-nav a:hover{filter:brightness(.97)}
+.ccc-nav a.active{background:var(--navy,#233F94);border-color:var(--navy,#233F94);color:#fff}
+.ccc-nav .home{color:var(--purple,#68267E);border-color:var(--purple,#68267E)}
+.ccc-nav-label{width:100%;font-size:12px;font-weight:700;color:var(--muted,#555B70);margin:0 0 1px 2px;letter-spacing:.2px}
+.ccc-next{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:16px 0 4px;padding-top:14px;border-top:1px solid var(--line,#D6DAE6)}
+.ccc-next a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:8px 12px;border:2px solid var(--navy,#233F94);border-radius:9px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;background:var(--card,#fff)}
+.ccc-next a.primary{background:var(--navy,#233F94);color:#fff}
+@media(max-width:520px){.ccc-nav{gap:6px}.ccc-nav a{font-size:12px;padding:6px 8px}.ccc-next{display:grid;grid-template-columns:1fr}.ccc-next a{width:100%}}
+</style>
+</head>
+<body>
+<nav class="ccc-nav" aria-label="COPD Compass Care assessments">
+<div class="ccc-nav-label">COPD Compass Care Assessments</div>
+<a class="home" href="index.html">Assessment Center</a>
+<a href="copd_compass_bode_index.html">BODE Index</a>
+<a href="copd_compass_weight_bmi_tracker.html" class="active">Weight / BMI</a>
+<a href="copd_compass_pft_fev1_tracker.html">PFT / FEV₁</a>
+<a href="copd_compass_6mwt_tracker.html">6-Minute Walk</a>
+<a href="copd_compass_spo2_oxygen_tracker.html">SpO₂ / Oxygen</a>
+<a href="copd_compass_symptoms_tracker.html">Symptoms</a>
+<a href="copd_compass_exacerbation_tracker.html">Exacerbations</a>
+<a href="copd_compass_hospital_er_tracker.html">Hospital / ER</a>
+<a href="copd_compass_medication_tracker.html">Medications</a>
+<a href="copd_compass_hagos_tracker.html">HAGOS</a>
+</nav>
+<div class="wrap">
+<div class="toggle"><button id="themeBtn" type="button">Toggle theme</button></div>
+<header class="header"><div class="brand">COPD COMPASS CARE</div><h1>Weight / BMI Tracker</h1><p>Track weight, BMI, and meaningful changes over time in one place.</p></header>
+
+<section class="card"><h2>Assessment</h2><div class="grid">
+<div><label for="date">Assessment date</label><input id="date" type="date"></div>
+<div><label for="label">Assessment label <span class="help">Optional</span></label><input id="label" type="text" placeholder="Baseline, follow-up, etc."></div>
+<div><label for="weight">Weight</label><div class="unitrow"><input id="weight" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Enter weight"><select id="weightUnit"><option value="lb">lb</option><option value="kg">kg</option></select></div></div>
+<div><label for="height">Height</label><div class="unitrow"><input id="height" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Enter height"><select id="heightUnit"><option value="in">in</option><option value="cm">cm</option></select></div></div>
+<div class="full"><label>Measurement context</label><div class="optgrid"><label class="opt sel"><input type="radio" name="context" value="routine" checked> Routine measurement</label><label class="opt"><input type="radio" name="context" value="clinical"> Clinical visit</label><label class="opt"><input type="radio" name="context" value="home"> Home monitoring</label></div></div>
+<div class="full"><label for="unintentional">Unintentional weight change</label><select id="unintentional"><option value="unknown">Unknown / not assessed</option><option value="no">No</option><option value="yes">Yes</option></select></div>
+<div class="full"><label for="bodycomp">Body-composition information <span class="help">Optional</span></label><div class="grid"><div><label for="ffm">Fat-free mass (kg)</label><input id="ffm" type="number" min="0" step="0.1" inputmode="decimal"></div><div><label for="ffmi">FFMI (kg/m²)</label><input id="ffmi" type="number" min="0" step="0.1" inputmode="decimal"></div></div></div>
+<div class="full"><label for="notes">Notes</label><textarea id="notes" placeholder="Measurement conditions, recent illness, appetite changes, clinician comments, or other context..."></textarea></div>
+</div></section>
+
+<section class="card"><h2>Calculate</h2><div class="btns"><button class="primary" id="calcBtn" type="button">Calculate</button><button id="clearBtn" type="button">Clear current</button></div></section>
+
+<section class="card hidden" id="resultCard"><h2>Result</h2><div class="score"><div class="n" id="bmiBig">—</div><div class="unit">BMI</div><div class="subscore" id="bmiCategory">—</div></div><div class="resultgrid"><div class="metric"><div class="k">Weight</div><div class="v" id="rWeight">—</div></div><div class="metric"><div class="k">Weight in kg</div><div class="v" id="rKg">—</div></div><div class="metric"><div class="k">BMI</div><div class="v" id="rBmi">—</div></div><div class="metric"><div class="k">Change from previous</div><div class="v" id="rChange">—</div></div></div><div class="note" style="margin-top:12px" id="copdNote"></div><div class="btns" style="margin-top:12px"><button id="shareBtn" type="button">Share result</button><button id="copyBtn" type="button">Copy result</button></div></section>
+
+<section class="card hidden" id="compareCard"><h2>Compare</h2><div id="compareContent"></div></section>
+
+<section class="card"><h2>Saved assessments</h2><div class="btns three"><button id="backupBtn" type="button">Backup</button><button id="restoreBtn" type="button">Restore</button><button class="danger" id="clearHistoryBtn" type="button">Clear history</button></div><input id="restoreFile" class="hidden" type="file" accept="application/json"><div id="history" class="hist" style="margin-top:12px"></div></section>
+
+<section class="card"><h2>Weight trend</h2><div id="chartWrap"><svg id="chart" viewBox="0 0 600 220" role="img" aria-label="Weight trend chart"></svg></div><div class="fine" id="chartEmpty">Save at least two assessments to see a trend.</div></section>
+
+<section class="card"><h2>About this tracker</h2><div class="note">BMI is calculated from weight and height. In COPD, weight and BMI can be clinically useful, but BMI does not describe muscle mass or fat-free mass. Unintentional weight loss and low fat-free mass can matter even when body weight appears stable.</div><p class="fine" style="margin-bottom:0">This tracker is for recording and understanding measurements. It does not diagnose malnutrition, cachexia, sarcopenia, or any other condition. Discuss significant or unintentional changes with your healthcare team.</p></section>
+
+<footer class="footer">COPD Compass Care • Guided Support and Practical Care for COPD</footer>
+</div>
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+<script>
+const KEY='ccc_weight_bmi_v1';
+let history=loadHistory();let current=null;
+const $=id=>document.getElementById(id);
+function loadHistory(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return []}}
+function saveHistory(){localStorage.setItem(KEY,JSON.stringify(history))}
+function today(){return new Date().toISOString().slice(0,10)}
+$('date').value=today();
+function kgWeight(v,u){return u==='kg'?v:v*0.45359237}
+function kgHeight(v,u){return u==='cm'?v/100:v*0.0254}
+function fmt(n,d=1){return Number.isFinite(n)?n.toFixed(d):'—'}
+function category(b){if(b<18.5)return'Underweight';if(b<25)return'Normal weight';if(b<30)return'Overweight';return'Obesity range'}
+function prevFor(date){return history.filter(x=>x.date<date).sort((a,b)=>b.date.localeCompare(a.date))[0]||history.filter(x=>x.date!==date).sort((a,b)=>b.date.localeCompare(a.date))[0]||null}
+function calculate(){
+ const w=parseFloat($('weight').value),h=parseFloat($('height').value);if(!(w>0)||!(h>0)){toast('Enter a valid weight and height first.');return null}
+ const kg=kgWeight(w,$('weightUnit').value),m=kgHeight(h,$('heightUnit').value),bmi=kg/(m*m);const prev=prevFor($('date').value);const pct=prev&&prev.weightKg?((kg-prev.weightKg)/prev.weightKg)*100:null;
+ current={id:Date.now(),date:$('date').value,label:$('label').value.trim(),weightKg:kg,heightM:m,bmi,context:document.querySelector('input[name=context]:checked').value,unintentional:$('unintentional').value,ffm:parseFloat($('ffm').value)||null,ffmi:parseFloat($('ffmi').value)||null,notes:$('notes').value.trim()};
+ $('bmiBig').textContent=fmt(bmi,1);$('bmiCategory').textContent=category(bmi);$('rWeight').textContent=fmt(w,1)+' '+$('weightUnit').value;$('rKg').textContent=fmt(kg,1)+' kg';$('rBmi').textContent=fmt(bmi,1);$('rChange').textContent=pct===null?'No prior assessment':(pct>=0?'+':'')+fmt(pct,1)+'%';
+ let note='BMI is a screening measure, not a complete measure of nutritional status or body composition.';if(bmi<21)note+=' In COPD, BMI below 21 kg/m² has historically been associated with worse outcomes at the population level, but it is not an individual prognosis.';if(current.unintentional==='yes')note+=' Unintentional weight loss is important to discuss with your healthcare team.';$('copdNote').textContent=note;
+ $('resultCard').classList.remove('hidden');renderCompare(prev,pct);return current;
+}
+function renderCompare(prev,pct){if(!prev){$('compareCard').classList.add('hidden');return}const d=current.weightKg-prev.weightKg;const c=current.bmi-prev.bmi;$('compareCard').classList.remove('hidden');$('compareContent').innerHTML='<div class="comparebox"><strong>Compared with '+escapeHtml(prev.date)+'</strong><div class="resultgrid" style="margin-top:10px"><div class="metric"><div class="k">Weight change</div><div class="v">'+(d>=0?'+':'')+fmt(d,1)+' kg</div></div><div class="metric"><div class="k">BMI change</div><div class="v">'+(c>=0?'+':'')+fmt(c,1)+'</div></div><div class="metric"><div class="k">Previous weight</div><div class="v">'+fmt(prev.weightKg,1)+' kg</div></div><div class="metric"><div class="k">Previous BMI</div><div class="v">'+fmt(prev.bmi,1)+'</div></div></div></div>'}
+function resultText(){if(!current)return'';return 'COPD Compass Care — Weight / BMI Assessment\nDate: '+current.date+(current.label?'\nLabel: '+current.label:'')+'\nWeight: '+fmt(current.weightKg,1)+' kg\nBMI: '+fmt(current.bmi,1)+' ('+category(current.bmi)+')\nUnintentional weight change: '+current.unintentional+(current.ffm?'\nFat-free mass: '+fmt(current.ffm,1)+' kg':'')+(current.ffmi?'\nFFMI: '+fmt(current.ffmi,1)+' kg/m²':'')+'\n\nThis is a tracking result, not a diagnosis.'}
+async function share(){if(!current)return;if(navigator.share){try{await navigator.share({title:'COPD Compass Care Weight / BMI Assessment',text:resultText()});return}catch(e){}}copyText(resultText())}
+function copyText(t){navigator.clipboard?.writeText(t).then(()=>toast('Result copied.')).catch(()=>{const ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();toast('Result copied.')})}
+function saveCurrent(){if(!current){toast('Calculate an assessment first.');return}const idx=history.findIndex(x=>x.date===current.date&&x.id===current.id);if(idx>=0)history[idx]=current;else history.push(current);history.sort((a,b)=>a.date.localeCompare(b.date));saveHistory();renderHistory();renderChart();toast('Assessment saved.')}
+function renderHistory(){const box=$('history');if(!history.length){box.innerHTML='<div class="fine">No saved assessments yet.</div>';return}box.innerHTML=history.slice().reverse().map(x=>'<div class="histitem"><div class="histtop"><div><div class="histdate">'+escapeHtml(x.date)+(x.label?' • '+escapeHtml(x.label):'')+'</div><div class="histmeta">'+fmt(x.weightKg,1)+' kg • BMI '+fmt(x.bmi,1)+' • '+escapeHtml(category(x.bmi))+'</div></div><div class="histdistance">'+fmt(x.bmi,1)+'</div></div><div class="histactions"><button class="small" onclick="viewItem('+x.id+')">View</button><button class="small" onclick="compareItem('+x.id+')">Compare</button><button class="small" onclick="shareItem('+x.id+')">Share</button><button class="small danger" onclick="deleteItem('+x.id+')">Delete</button></div></div>').join('')}
+window.viewItem=id=>{const x=history.find(a=>a.id===id);if(!x)return;loadItem(x);toast('Assessment loaded.')}
+window.compareItem=id=>{const x=history.find(a=>a.id===id);if(!x)return;const others=history.filter(a=>a.id!==id).sort((a,b)=>b.date.localeCompare(a.date));if(!others.length){toast('Save another assessment to compare.');return}const p=others[0];const d=x.weightKg-p.weightKg,c=x.bmi-p.bmi;$('compareCard').classList.remove('hidden');$('compareContent').innerHTML='<div class="comparebox"><strong>'+escapeHtml(x.date)+' vs '+escapeHtml(p.date)+'</strong><div class="resultgrid" style="margin-top:10px"><div class="metric"><div class="k">Weight change</div><div class="v">'+(d>=0?'+':'')+fmt(d,1)+' kg</div></div><div class="metric"><div class="k">BMI change</div><div class="v">'+(c>=0?'+':'')+fmt(c,1)+'</div></div></div></div>'}
+window.shareItem=id=>{const x=history.find(a=>a.id===id);if(!x)return;const old=current;current=x;share().finally(()=>current=old)}
+window.deleteItem=id=>{if(!confirm('Delete this saved assessment?'))return;history=history.filter(x=>x.id!==id);saveHistory();renderHistory();renderChart();toast('Assessment deleted.')}
+function loadItem(x){current={...x};$('date').value=x.date;$('label').value=x.label||'';$('weightUnit').value='kg';$('weight').value=fmt(x.weightKg,1);$('heightUnit').value='cm';$('height').value=fmt(x.heightM*100,1);document.querySelectorAll('input[name=context]').forEach(r=>r.checked=r.value===x.context);$('unintentional').value=x.unintentional||'unknown';$('ffm').value=x.ffm||'';$('ffmi').value=x.ffmi||'';$('notes').value=x.notes||'';calculate()}
+function clearCurrent(){['weight','height','label','ffm','ffmi','notes'].forEach(id=>$(id).value='');$('date').value=today();$('weightUnit').value='lb';$('heightUnit').value='in';$('unintentional').value='unknown';document.querySelector('input[name=context][value="routine"]').checked=true;current=null;$('resultCard').classList.add('hidden');$('compareCard').classList.add('hidden');toast('Current assessment cleared.')}
+function renderChart(){const svg=$('chart');if(history.length<2){svg.innerHTML='';$('chartEmpty').classList.remove('hidden');return}$('chartEmpty').classList.add('hidden');const a=history.slice().sort((x,y)=>x.date.localeCompare(y.date));const W=600,H=220,p=38;const vals=a.map(x=>x.weightKg),min=Math.min(...vals),max=Math.max(...vals),span=Math.max(max-min,1);const pts=a.map((x,i)=>{const X=p+(i*(W-2*p)/Math.max(a.length-1,1));const Y=H-p-((x.weightKg-min)/span)*(H-2*p);return [X,Y,x]});let s='<line x1="'+p+'" y1="'+(H-p)+'" x2="'+(W-p)+'" y2="'+(H-p)+'" stroke="currentColor" opacity=".25"/><polyline fill="none" stroke="var(--navy)" stroke-width="3" points="'+pts.map(q=>q[0]+','+q[1]).join(' ')+'"/>';pts.forEach(q=>{s+='<circle cx="'+q[0]+'" cy="'+q[1]+'" r="5" fill="var(--purple)"/><text x="'+q[0]+'" y="'+(q[1]-10)+'" text-anchor="middle" font-size="12" fill="currentColor">'+fmt(q[2].weightKg,1)+'</text>'});svg.innerHTML=s}
+function backup(){const blob=new Blob([JSON.stringify({app:'COPD Compass Care Weight/BMI Tracker',version:1,history},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='copd-compass-weight-bmi-backup.json';a.click();URL.revokeObjectURL(a.href)}
+$('restoreBtn').onclick=()=>$('restoreFile').click();$('restoreFile').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const d=JSON.parse(r.result);if(!Array.isArray(d.history))throw new Error();history=d.history;saveHistory();renderHistory();renderChart();toast('Backup restored.')}catch(err){toast('Could not restore that backup.')}};r.readAsText(f)};
+$('calcBtn').onclick=()=>{const c=calculate();if(c){saveCurrent()}};$('clearBtn').onclick=clearCurrent;$('shareBtn').onclick=share;$('copyBtn').onclick=()=>copyText(resultText());$('backupBtn').onclick=backup;$('clearHistoryBtn').onclick=()=>{if(!history.length)return;if(confirm('Clear all saved assessments?')){history=[];saveHistory();renderHistory();renderChart();toast('Saved history cleared.')}};
+$('themeBtn').onclick=()=>{const d=document.documentElement.getAttribute('data-theme');document.documentElement.setAttribute('data-theme',d==='dark'?'light':'dark')};
+document.querySelectorAll('input[name=context]').forEach(r=>r.addEventListener('change',()=>document.querySelectorAll('.opt').forEach(o=>o.classList.toggle('sel',o.querySelector('input').checked))));
+function toast(msg){const t=$('toast');t.textContent=msg;t.classList.remove('hidden');clearTimeout(window.__toast);window.__toast=setTimeout(()=>t.classList.add('hidden'),2200)}
+function escapeHtml(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+renderHistory();renderChart();
+</script>
+<div class="ccc-next"><a href="copd_compass_bode_index.html">← BODE Index</a><a class="primary" href="copd_compass_pft_fev1_tracker.html">Next: PFT / FEV₁ →</a></div>
+</body></html>

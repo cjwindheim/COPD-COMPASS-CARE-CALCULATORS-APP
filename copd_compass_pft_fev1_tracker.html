@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#233F94">
+<title>PFT / FEV1 Tracker – COPD Compass Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#233F94;--purple:#68267E;--bg:#F5F6FA;--card:#FFFFFF;--ink:#1B1F2E;--muted:#555B70;--line:#D6DAE6;--accent:var(--navy);--accent-ink:#FFFFFF;--note-bg:#F1E9F5;--note-line:var(--purple);--danger:#A52A2A;--good:#236B3A}
+@media(prefers-color-scheme:dark){:root{--bg:#111521;--card:#1A2030;--ink:#F4F6FC;--muted:#B7BDCF;--line:#343B4E;--note-bg:#2A2030}}
+[data-theme="dark"]{--bg:#111521;--card:#1A2030;--ink:#F4F6FC;--muted:#B7BDCF;--line:#343B4E;--note-bg:#2A2030}
+[data-theme="light"]{--bg:#F5F6FA;--card:#FFFFFF;--ink:#1B1F2E;--muted:#555B70;--line:#D6DAE6;--note-bg:#F1E9F5}
+*{box-sizing:border-box}html{font-family:'Atkinson Hyperlegible',system-ui,sans-serif;background:var(--bg);color:var(--ink)}body{margin:0;background:var(--bg);line-height:1.45}.wrap{max-width:640px;margin:0 auto;padding:18px 14px 40px}.header{padding:8px 2px 16px}.brand{font-weight:700;color:var(--purple);font-size:15px;letter-spacing:.2px}.header h1{font-size:30px;line-height:1.12;margin:5px 0 8px;color:var(--navy)}.header p{margin:0;color:var(--muted);font-size:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:12px 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}h2{font-size:20px;margin:0 0 13px;color:var(--navy)}h3{font-size:17px;margin:17px 0 9px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}label{display:block;font-weight:700;font-size:15px;margin:0 0 6px}.help{display:block;color:var(--muted);font-size:13px;font-weight:400;margin-top:3px}input,select,textarea{width:100%;min-height:48px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);padding:10px 12px;font:inherit;font-size:16px}textarea{min-height:92px;resize:vertical}.unitrow{display:grid;grid-template-columns:1fr 112px;gap:8px}.optgrid{display:grid;gap:8px}.opt{border:2px solid var(--line);border-radius:10px;padding:11px 12px;display:flex;gap:10px;align-items:flex-start;cursor:pointer;background:var(--card)}.opt input{width:auto;min-height:auto;margin-top:3px}.opt.sel{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--card))}.btns{display:grid;grid-template-columns:1fr 1fr;gap:9px}.btns.three{grid-template-columns:repeat(3,1fr)}button{min-height:48px;border:2px solid var(--accent);border-radius:10px;background:var(--card);color:var(--accent);font:700 16px inherit;padding:9px 12px;cursor:pointer}button:hover{filter:brightness(.97)}button.on,button.primary{background:var(--accent);color:var(--accent-ink)}button.danger{border-color:var(--danger);color:var(--danger)}button.small{min-height:40px;font-size:14px;padding:7px 10px}.score{text-align:center;padding:7px 0 12px}.score .n{font-size:64px;line-height:.95;font-weight:700;color:var(--navy)}.score .unit{font-size:20px;color:var(--muted);font-weight:700}.subscore{color:var(--muted);font-size:15px;margin-top:4px}.resultgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.metric{border:1px solid var(--line);border-radius:10px;padding:11px}.metric .k{font-size:13px;color:var(--muted)}.metric .v{font-size:20px;font-weight:700;margin-top:2px}.note{background:var(--note-bg);border-left:4px solid var(--note-line);padding:12px 13px;border-radius:8px;color:var(--ink);font-size:14px}.fine{font-size:13px;color:var(--muted)}.hidden{display:none!important}.hist{display:grid;gap:9px}.histitem{border:1px solid var(--line);border-radius:10px;padding:11px}.histtop{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.histdate{font-weight:700}.histdistance{font-weight:700;color:var(--navy)}.histmeta{color:var(--muted);font-size:13px;margin-top:4px}.histactions{display:flex;gap:6px;flex-wrap:wrap;margin-top:9px}.comparebox{border:2px solid var(--purple);border-radius:10px;padding:12px}.delta.good{color:var(--good)}.delta.bad{color:var(--danger)}svg{width:100%;height:220px;display:block}.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:var(--card);padding:10px 14px;border-radius:999px;font-weight:700;z-index:20;box-shadow:0 5px 20px rgba(0,0,0,.2)}.footer{font-size:12px;color:var(--muted);padding:5px 3px 0}.toggle{display:flex;justify-content:flex-end;margin-bottom:8px}.toggle button{min-height:38px;font-size:13px}@media(max-width:470px){.grid,.resultgrid{grid-template-columns:1fr}.btns.three{grid-template-columns:1fr}.unitrow{grid-template-columns:1fr 100px}}
+</style>
+
+<style id="ccc-navigation-style">
+.ccc-nav{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:0 0 16px;padding:10px 11px;background:var(--card,#fff);border:1px solid var(--line,#D6DAE6);border-radius:12px;box-shadow:0 2px 8px rgba(27,31,46,.05)}
+.ccc-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:6px 9px;border:1px solid var(--line,#D6DAE6);border-radius:8px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;font-size:13px;line-height:1.1;background:var(--card,#fff)}
+.ccc-nav a:hover{filter:brightness(.97)}
+.ccc-nav a.active{background:var(--navy,#233F94);border-color:var(--navy,#233F94);color:#fff}
+.ccc-nav .home{color:var(--purple,#68267E);border-color:var(--purple,#68267E)}
+.ccc-nav-label{width:100%;font-size:12px;font-weight:700;color:var(--muted,#555B70);margin:0 0 1px 2px;letter-spacing:.2px}
+.ccc-next{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:16px 0 4px;padding-top:14px;border-top:1px solid var(--line,#D6DAE6)}
+.ccc-next a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:8px 12px;border:2px solid var(--navy,#233F94);border-radius:9px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;background:var(--card,#fff)}
+.ccc-next a.primary{background:var(--navy,#233F94);color:#fff}
+@media(max-width:520px){.ccc-nav{gap:6px}.ccc-nav a{font-size:12px;padding:6px 8px}.ccc-next{display:grid;grid-template-columns:1fr}.ccc-next a{width:100%}}
+</style>
+</head>
+<body>
+<nav class="ccc-nav" aria-label="COPD Compass Care assessments">
+<div class="ccc-nav-label">COPD Compass Care Assessments</div>
+<a class="home" href="index.html">Assessment Center</a>
+<a href="copd_compass_bode_index.html">BODE Index</a>
+<a href="copd_compass_weight_bmi_tracker.html">Weight / BMI</a>
+<a href="copd_compass_pft_fev1_tracker.html" class="active">PFT / FEV₁</a>
+<a href="copd_compass_6mwt_tracker.html">6-Minute Walk</a>
+<a href="copd_compass_spo2_oxygen_tracker.html">SpO₂ / Oxygen</a>
+<a href="copd_compass_symptoms_tracker.html">Symptoms</a>
+<a href="copd_compass_exacerbation_tracker.html">Exacerbations</a>
+<a href="copd_compass_hospital_er_tracker.html">Hospital / ER</a>
+<a href="copd_compass_medication_tracker.html">Medications</a>
+<a href="copd_compass_hagos_tracker.html">HAGOS</a>
+</nav>
+<div class="wrap">
+<div class="toggle"><button id="themeBtn" type="button">Toggle theme</button></div>
+<header class="header"><div class="brand">COPD COMPASS CARE</div><h1>PFT / FEV1 Tracker</h1><p>Record pulmonary function results over time, compare tests, and keep the measurements and testing conditions that matter for interpretation.</p></header>
+
+<section class="card"><h2>Test information</h2><div class="grid">
+<div><label for="date">Assessment date</label><input id="date" type="date"></div>
+<div><label for="testType">Test type</label><select id="testType"><option>Full PFT</option><option>Spirometry</option><option>Post-bronchodilator spirometry</option><option>Other</option></select></div>
+<div><label for="prePost">Measurement phase</label><select id="prePost"><option>Pre-bronchodilator</option><option>Post-bronchodilator</option><option>Not specified</option></select></div>
+<div><label for="quality">Test quality / grade<span class="help">Use the laboratory's reported quality grade when available.</span></label><select id="quality"><option value="">Not recorded</option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option></select></div>
+<div><label for="posture">Test posture</label><select id="posture"><option>Seated</option><option>Standing</option><option>Not recorded</option></select></div>
+<div><label for="lab">Testing site / lab</label><input id="lab" type="text" placeholder="Optional"></div>
+<div class="full"><label for="reference">Reference equation / report notes<span class="help">Optional. If your report lists the reference set, record it here rather than recalculating predicted values yourself.</span></label><input id="reference" type="text" placeholder="Optional"></div>
+</div></section>
+
+<section class="card"><h2>Spirometry</h2><div class="grid">
+<div><label for="fev1">FEV₁ (L)</label><input id="fev1" type="number" min="0" step="0.01" placeholder="e.g., 1.21"></div>
+<div><label for="fev1pct">FEV₁ (% predicted)<span class="help">Enter the laboratory-reported value.</span></label><input id="fev1pct" type="number" min="0" max="200" step="0.1" placeholder="e.g., 32"></div>
+<div><label for="fev1z">FEV₁ z-score</label><input id="fev1z" type="number" step="0.01" placeholder="Optional"></div>
+<div><label for="fev1lln">FEV₁ LLN (L)</label><input id="fev1lln" type="number" min="0" step="0.01" placeholder="Optional"></div>
+<div><label for="fvc">FVC (L)</label><input id="fvc" type="number" min="0" step="0.01" placeholder="e.g., 4.28"></div>
+<div><label for="fvcpct">FVC (% predicted)</label><input id="fvcpct" type="number" min="0" max="200" step="0.1" placeholder="Optional"></div>
+<div><label for="ratio">FEV₁/FVC (%)<span class="help">Enter the reported ratio, or calculate it from FEV₁ and FVC.</span></label><input id="ratio" type="number" min="0" max="150" step="0.1" placeholder="Optional"></div>
+<div><label for="ratiolln">FEV₁/FVC LLN (%)</label><input id="ratiolln" type="number" min="0" max="150" step="0.1" placeholder="Optional"></div>
+</div></section>
+
+<section class="card"><h2>Bronchodilator response</h2><div class="grid">
+<div><label for="preFev1">Pre-BD FEV₁ (L)</label><input id="preFev1" type="number" min="0" step="0.01" placeholder="Optional"></div>
+<div><label for="postFev1">Post-BD FEV₁ (L)</label><input id="postFev1" type="number" min="0" step="0.01" placeholder="Optional"></div>
+<div><label for="preFvc">Pre-BD FVC (L)</label><input id="preFvc" type="number" min="0" step="0.01" placeholder="Optional"></div>
+<div><label for="postFvc">Post-BD FVC (L)</label><input id="postFvc" type="number" min="0" step="0.01" placeholder="Optional"></div>
+</div><div class="note" style="margin-top:12px">If your report includes a bronchodilator response interpretation, record the laboratory's conclusion in Notes. The tracker calculates the raw change but does not independently diagnose a positive or negative response.</div></section>
+
+<section class="card"><h2>Lung volumes</h2><div class="grid">
+<div><label for="tlc">TLC (L)</label><input id="tlc" type="number" min="0" step="0.01" placeholder="Optional"></div>
+<div><label for="tlcpct">TLC (% predicted)</label><input id="tlcpct" type="number" min="0" max="200" step="0.1" placeholder="Optional"></div>
+<div><label for="rv">RV (L)</label><input id="rv" type="number" min="0" step="0.01" placeholder="Optional"></div>
+<div><label for="rvpct">RV (% predicted)</label><input id="rvpct" type="number" min="0" max="300" step="0.1" placeholder="Optional"></div>
+<div><label for="rvtlc">RV/TLC (%)</label><input id="rvtlc" type="number" min="0" max="100" step="0.1" placeholder="Optional"></div>
+<div><label for="frc">FRC (L)</label><input id="frc" type="number" min="0" step="0.01" placeholder="Optional"></div>
+</div></section>
+
+<section class="card"><h2>Diffusion</h2><div class="grid">
+<div><label for="dlco">DLCO</label><input id="dlco" type="number" min="0" step="0.1" placeholder="Optional"></div>
+<div><label for="dlcopct">DLCO (% predicted)</label><input id="dlcopct" type="number" min="0" max="200" step="0.1" placeholder="Optional"></div>
+<div><label for="dlcoadj">DLCO/VA or KCO (% predicted)</label><input id="dlcoadj" type="number" min="0" max="200" step="0.1" placeholder="Optional"></div>
+<div><label for="dlcoUnit">DLCO units / report notation</label><input id="dlcoUnit" type="text" placeholder="Optional"></div>
+</div></section>
+
+<section class="card"><h2>Other conditions</h2><div class="grid">
+<div><label for="oxygen">Supplemental oxygen during test?</label><select id="oxygen"><option>No</option><option>Yes</option><option>Not specified</option></select></div>
+<div><label for="flow">Oxygen flow (L/min)</label><input id="flow" type="number" min="0" step="0.5" placeholder="Optional"></div>
+<div><label for="meds">Relevant medication / withholding notes</label><input id="meds" type="text" placeholder="Optional"></div>
+<div><label for="symptoms">Symptoms / test issues</label><input id="symptoms" type="text" placeholder="Optional"></div>
+<div class="full"><label for="notes">Notes</label><textarea id="notes" placeholder="Optional: quality comments, technician notes, unusual findings, or the impression from the PFT report."></textarea></div>
+</div></section>
+
+<section class="card"><div class="btns"><button class="primary" id="calculate" type="button">Calculate result</button><button id="clearCurrent" type="button">Clear current</button></div></section>
+
+<section class="card hidden" id="resultCard"><h2>Result</h2>
+<div class="score"><div class="n" id="resultFev1">—</div><div class="unit">FEV₁ liters</div><div class="subscore" id="resultPct">—% predicted</div></div>
+<div class="resultgrid">
+<div class="metric"><div class="k">FVC</div><div class="v" id="rFvc">Not recorded</div></div>
+<div class="metric"><div class="k">FEV₁/FVC</div><div class="v" id="rRatio">Not recorded</div></div>
+<div class="metric"><div class="k">FEV₁ category</div><div class="v" id="rSeverity">Not classified</div></div>
+<div class="metric"><div class="k">TLC</div><div class="v" id="rTlc">Not recorded</div></div>
+<div class="metric"><div class="k">RV</div><div class="v" id="rRv">Not recorded</div></div>
+<div class="metric"><div class="k">DLCO</div><div class="v" id="rDlco">Not recorded</div></div>
+</div>
+<div id="changeBox" class="note hidden" style="margin-top:12px"></div>
+<div class="note" style="margin-top:12px"><strong>Interpretation:</strong> This tracker records laboratory-reported PFT values and longitudinal change. FEV₁ percent-predicted categories shown here use the GOLD severity bands commonly used in COPD: ≥80% mild, 50–79% moderate, 30–49% severe, and &lt;30% very severe. These bands describe airflow-limitation severity in the GOLD framework and are not a substitute for the complete PFT interpretation. ATS/ERS interpretation also considers the lower limit of normal (LLN), z-scores, test quality, and the full pattern of results.</div>
+<div class="btns" style="margin-top:12px"><button class="primary" id="share" type="button">Share result</button><button id="copy" type="button">Copy result</button></div>
+<div class="btns" style="margin-top:9px"><button id="save" type="button">Save assessment</button><button id="backup" type="button">Backup history</button></div>
+</section>
+
+<section class="card hidden" id="compareCard"><h2>Compare assessments</h2><div id="compareContent"></div></section>
+<section class="card"><h2>Saved assessments</h2><div class="btns"><button id="clearHistory" class="danger" type="button">Clear saved history</button><button id="restore" type="button">Restore backup</button></div><input id="restoreFile" type="file" accept="application/json" class="hidden"><div id="history" class="hist" style="margin-top:12px"></div><div id="chartWrap" class="hidden" style="margin-top:15px"><h3>FEV₁ trend</h3><svg id="chart" viewBox="0 0 600 220" role="img" aria-label="FEV1 trend over time"></svg></div></section>
+
+<div class="footer">COPD Compass Care • Guided Support and Practical Care for COPD<br>Tracking tool only. It does not replace medical interpretation of pulmonary function testing. Use the values and interpretation reported by your qualified PFT laboratory or clinician.</div>
+</div><div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+<script>
+const KEY='ccc_pft_fev1_v1';let history=loadHistory();let current=null;const $=id=>document.getElementById(id);
+function today(){return new Date().toISOString().slice(0,10)}$('date').value=today();
+function loadHistory(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch(e){return []}}function persist(){localStorage.setItem(KEY,JSON.stringify(history));renderHistory()}
+function toast(msg){$('toast').textContent=msg;$('toast').classList.remove('hidden');clearTimeout(window.__toast);window.__toast=setTimeout(()=>$('toast').classList.add('hidden'),2200)}
+function num(id){const v=parseFloat($(id).value);return Number.isFinite(v)?v:null}function val(id){return $(id).value}function fmt(n,d=2){return Number.isFinite(n)?n.toFixed(d):'—'}function pct(n,d=1){return Number.isFinite(n)?n.toFixed(d)+'%':'—'}
+function calculateRatio(fev1,fvc){return fev1!=null&&fvc!=null&&fvc>0?100*fev1/fvc:null}
+function severity(p){if(p==null)return 'Not classified';if(p>=80)return 'Mild';if(p>=50)return 'Moderate';if(p>=30)return 'Severe';return 'Very severe'}
+function collect(){const fev1=num('fev1');if(fev1===null||fev1<=0)throw new Error('Enter the measured FEV₁ in liters.');const fvc=num('fvc');let ratio=num('ratio');if(ratio===null&&fvc!=null&&fvc>0)ratio=calculateRatio(fev1,fvc);const fev1pct=num('fev1pct');const item={id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),date:val('date')||today(),testType:val('testType'),prePost:val('prePost'),quality:val('quality'),posture:val('posture'),lab:val('lab'),reference:val('reference'),fev1,fev1pct,fev1z:num('fev1z'),fev1lln:num('fev1lln'),fvc,fvcpct:num('fvcpct'),ratio,ratiolln:num('ratiolln'),preFev1:num('preFev1'),postFev1:num('postFev1'),preFvc:num('preFvc'),postFvc:num('postFvc'),tlc:num('tlc'),tlcpct:num('tlcpct'),rv:num('rv'),rvpct:num('rvpct'),rvtlc:num('rvtlc'),frc:num('frc'),dlco:num('dlco'),dlcopct:num('dlcopct'),dlcoadj:num('dlcoadj'),dlcoUnit:val('dlcoUnit'),oxygen:val('oxygen'),flow:num('flow'),meds:val('meds'),symptoms:val('symptoms'),notes:val('notes')};item.severity=severity(item.fev1pct);return item}
+function showResult(item){current=item;$('resultCard').classList.remove('hidden');$('resultFev1').textContent=fmt(item.fev1,2);$('resultPct').textContent=item.fev1pct!=null?fmt(item.fev1pct,1)+'% predicted':'% predicted not recorded';$('rFvc').textContent=item.fvc!=null?fmt(item.fvc,2)+' L':'Not recorded';$('rRatio').textContent=item.ratio!=null?fmt(item.ratio,1)+'%':'Not recorded';$('rSeverity').textContent=item.severity;$('rTlc').textContent=item.tlc!=null?fmt(item.tlc,2)+' L':'Not recorded';$('rRv').textContent=item.rv!=null?fmt(item.rv,2)+' L':'Not recorded';$('rDlco').textContent=item.dlcopct!=null?fmt(item.dlcopct,1)+'% predicted':(item.dlco!=null?fmt(item.dlco,1):'Not recorded');const p=compareWithPrevious(item);if(p){const d=item.fev1-p.fev1;$('changeBox').classList.remove('hidden');$('changeBox').innerHTML='<strong>FEV₁ change from previous saved test:</strong> '+(d>=0?'+':'')+fmt(d,2)+' L'+(p.fev1pct!=null&&item.fev1pct!=null?' ('+(item.fev1pct-p.fev1pct>=0?'+':'')+fmt(item.fev1pct-p.fev1pct,1)+' percentage points predicted)':'')+' compared with '+fmt(p.fev1,2)+' L on '+escapeHtml(p.date)+'. Compare tests only after considering test quality and whether the same conditions and reference approach were used.'}else $('changeBox').classList.add('hidden');$('resultCard').scrollIntoView({behavior:'smooth',block:'start'})}
+function compareWithPrevious(item){const prior=history.filter(x=>x.id!==item.id).sort((a,b)=>a.date.localeCompare(b.date));return prior.length?prior[prior.length-1]:null}
+$('calculate').addEventListener('click',()=>{try{showResult(collect());toast('Result calculated')}catch(e){toast(e.message)}});
+$('save').addEventListener('click',()=>{if(!current){try{current=collect()}catch(e){toast(e.message);return}}const idx=history.findIndex(x=>x.id===current.id);if(idx>=0)history[idx]=current;else history.push(current);history.sort((a,b)=>a.date.localeCompare(b.date));persist();renderCompare();toast('Assessment saved')});
+function formatShare(x){let s='COPD Compass Care – PFT / FEV₁ Result\nDate: '+x.date+'\nFEV₁: '+fmt(x.fev1,2)+' L';if(x.fev1pct!=null)s+=' ('+fmt(x.fev1pct,1)+'% predicted)';if(x.fvc!=null)s+='\nFVC: '+fmt(x.fvc,2)+' L'+(x.fvcpct!=null?' ('+fmt(x.fvcpct,1)+'% predicted)':'');if(x.ratio!=null)s+='\nFEV₁/FVC: '+fmt(x.ratio,1)+'%';if(x.fev1lln!=null)s+='\nFEV₁ LLN: '+fmt(x.fev1lln,2)+' L';if(x.ratiolln!=null)s+='\nFEV₁/FVC LLN: '+fmt(x.ratiolln,1)+'%';s+='\nFEV₁ category: '+x.severity+' (GOLD framework, if applicable)';if(x.quality)s+='\nQuality grade: '+x.quality;if(x.testType)s+='\nTest: '+x.testType+' • '+x.prePost;if(x.tlc!=null||x.tlcpct!=null)s+='\nTLC: '+(x.tlc!=null?fmt(x.tlc,2)+' L':'—')+(x.tlcpct!=null?' ('+fmt(x.tlcpct,1)+'% predicted)':'');if(x.rv!=null||x.rvpct!=null)s+='\nRV: '+(x.rv!=null?fmt(x.rv,2)+' L':'—')+(x.rvpct!=null?' ('+fmt(x.rvpct,1)+'% predicted)':'');if(x.rvtlc!=null)s+='\nRV/TLC: '+fmt(x.rvtlc,1)+'%';if(x.dlcopct!=null)s+='\nDLCO: '+fmt(x.dlcopct,1)+'% predicted';else if(x.dlco!=null)s+='\nDLCO: '+fmt(x.dlco,1)+(x.dlcoUnit?' '+x.dlcoUnit:'');if(x.preFev1!=null&&x.postFev1!=null)s+='\nFEV₁ pre/post BD: '+fmt(x.preFev1,2)+' → '+fmt(x.postFev1,2)+' L ('+((x.postFev1-x.preFev1)>=0?'+':'')+fmt(x.postFev1-x.preFev1,2)+' L)';if(x.oxygen&&x.oxygen!=='No')s+='\nO₂: '+x.oxygen+(x.flow!=null?' at '+x.flow+' L/min':'');if(x.notes)s+='\nNotes: '+x.notes;s+='\n\nCOPD Compass Care tracking tool. Full PFT interpretation should follow the laboratory report and qualified clinician interpretation.';return s}
+$('copy').addEventListener('click',async()=>{if(!current){toast('Calculate a result first');return}try{await navigator.clipboard.writeText(formatShare(current));toast('Result copied')}catch(e){toast('Copy is unavailable on this device')}});
+$('share').addEventListener('click',async()=>{if(!current){toast('Calculate a result first');return}const text=formatShare(current);if(navigator.share){try{await navigator.share({title:'PFT / FEV1 Result',text})}catch(e){}}else{try{await navigator.clipboard.writeText(text);toast('Result copied for sharing')}catch(e){toast('Sharing is unavailable')}}});
+$('clearCurrent').addEventListener('click',()=>{document.querySelectorAll('input,textarea').forEach(el=>{if(el.type==='date')el.value=today();else if(el.type!=='file')el.value=''});$('testType').value='Full PFT';$('prePost').value='Pre-bronchodilator';$('quality').value='';$('posture').value='Seated';$('oxygen').value='No';$('resultCard').classList.add('hidden');current=null;toast('Current assessment cleared')});
+function escapeHtml(s){return String(s??'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function renderHistory(){const h=$('history');if(!history.length){h.innerHTML='<div class="fine">No saved assessments yet.</div>';$('chartWrap').classList.add('hidden');return}h.innerHTML=history.slice().reverse().map(x=>`<div class="histitem"><div class="histtop"><div><div class="histdate">${escapeHtml(x.date)}</div><div class="histmeta">${escapeHtml(x.testType)} • ${escapeHtml(x.prePost)}${x.quality?' • Grade '+escapeHtml(x.quality):''}</div></div><div class="histdistance">${fmt(x.fev1,2)} L</div></div><div class="histmeta">${x.fev1pct!=null?fmt(x.fev1pct,1)+'% predicted':''}${x.ratio!=null?' • FEV₁/FVC '+fmt(x.ratio,1)+'%':''}${x.tlc!=null?' • TLC '+fmt(x.tlc,2)+' L':''}</div><div class="histactions"><button class="small" onclick="viewHistory('${x.id}')">View</button><button class="small" onclick="selectCompare('${x.id}')">Compare</button><button class="small" onclick="shareHistory('${x.id}')">Share</button><button class="small danger" onclick="deleteHistory('${x.id}')">Delete</button></div></div>`).join('');drawChart()}
+window.viewHistory=id=>{const x=history.find(a=>a.id===id);if(x)showResult(x)};window.deleteHistory=id=>{if(confirm('Delete this saved PFT assessment?')){history=history.filter(x=>x.id!==id);persist();renderCompare();toast('Assessment deleted')}};window.shareHistory=async id=>{const x=history.find(a=>a.id===id);if(!x)return;const text=formatShare(x);if(navigator.share){try{await navigator.share({title:'PFT / FEV1 Result',text})}catch(e){}}else{try{await navigator.clipboard.writeText(text);toast('Result copied')}catch(e){toast('Sharing is unavailable')}}};window.selectCompare=id=>{const x=history.find(a=>a.id===id);if(!x)return;const sorted=history.slice().sort((a,b)=>a.date.localeCompare(b.date));const i=sorted.findIndex(a=>a.id===id);const p=sorted[i-1]||null;renderCompare(x,p)};
+function renderCompare(a=null,b=null){const c=$('compareContent');if(!a){$('compareCard').classList.add('hidden');return}$('compareCard').classList.remove('hidden');if(!b){c.innerHTML='<div class="comparebox"><strong>'+escapeHtml(a.date)+'</strong><br>'+fmt(a.fev1,2)+' L FEV₁. No earlier saved assessment is available for comparison.</div>';return}const d=a.fev1-b.fev1;const dp=a.fev1pct!=null&&b.fev1pct!=null?a.fev1pct-b.fev1pct:null;const dr=a.ratio!=null&&b.ratio!=null?a.ratio-b.ratio:null;c.innerHTML='<div class="comparebox"><strong>'+escapeHtml(b.date)+' → '+escapeHtml(a.date)+'</strong><div class="resultgrid" style="margin-top:10px"><div class="metric"><div class="k">FEV₁ change</div><div class="v delta '+(d>=0?'good':'bad')+'">'+(d>=0?'+':'')+fmt(d,2)+' L</div></div><div class="metric"><div class="k">FEV₁ % predicted</div><div class="v">'+(b.fev1pct!=null?fmt(b.fev1pct,1)+'%':'—')+' → '+(a.fev1pct!=null?fmt(a.fev1pct,1)+'%':'—')+(dp!=null?' ('+(dp>=0?'+':'')+fmt(dp,1)+' pp)':'')+'</div></div><div class="metric"><div class="k">FEV₁/FVC</div><div class="v">'+(b.ratio!=null?fmt(b.ratio,1)+'%':'—')+' → '+(a.ratio!=null?fmt(a.ratio,1)+'%':'—')+(dr!=null?' ('+(dr>=0?'+':'')+fmt(dr,1)+' pp)':'')+'</div></div><div class="metric"><div class="k">TLC</div><div class="v">'+(b.tlc!=null?fmt(b.tlc,2)+' L':'—')+' → '+(a.tlc!=null?fmt(a.tlc,2)+' L':'—')+'</div></div><div class="metric"><div class="k">RV</div><div class="v">'+(b.rv!=null?fmt(b.rv,2)+' L':'—')+' → '+(a.rv!=null?fmt(a.rv,2)+' L':'—')+'</div></div><div class="metric"><div class="k">DLCO % predicted</div><div class="v">'+(b.dlcopct!=null?fmt(b.dlcopct,1)+'%':'—')+' → '+(a.dlcopct!=null?fmt(a.dlcopct,1)+'%':'—')+'</div></div></div><p class="fine">Longitudinal PFT changes should be interpreted in context of test quality, reference equations, posture, medication state, and other testing conditions.</p></div>'}
+$('clearHistory').addEventListener('click',()=>{if(!history.length){toast('History is already empty');return}if(confirm('Delete all saved PFT assessments?')){history=[];persist();$('compareCard').classList.add('hidden');toast('Saved history cleared')}});$('backup').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({app:'COPD Compass Care PFT / FEV1',version:1,history},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='copd-compass-care-pft-fev1-backup.json';a.click();URL.revokeObjectURL(a.href);toast('Backup created')});$('restore').addEventListener('click',()=>$('restoreFile').click());$('restoreFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const o=JSON.parse(r.result);if(!Array.isArray(o.history))throw Error();history=o.history;persist();toast('Backup restored')}catch(err){toast('Invalid backup file')}};r.readAsText(f);e.target.value='' });
+function drawChart(){if(history.length<2){$('chartWrap').classList.add('hidden');return}$('chartWrap').classList.remove('hidden');const svg=$('chart');svg.innerHTML='';const W=600,H=220,pad=40;const xs=history.map((_,i)=>pad+i*((W-2*pad)/Math.max(1,history.length-1)));const ys=history.map(x=>x.fev1);const min=Math.min(...ys),max=Math.max(...ys),range=Math.max(.2,max-min);const y=v=>H-pad-(v-(min-range*.1))/(range*1.2)*(H-2*pad);const NS='http://www.w3.org/2000/svg';const line=document.createElementNS(NS,'polyline');line.setAttribute('fill','none');line.setAttribute('stroke','currentColor');line.setAttribute('stroke-width','3');line.setAttribute('points',history.map((x,i)=>xs[i]+','+y(x.fev1)).join(' '));svg.appendChild(line);history.forEach((x,i)=>{const c=document.createElementNS(NS,'circle');c.setAttribute('cx',xs[i]);c.setAttribute('cy',y(x.fev1));c.setAttribute('r','5');c.setAttribute('fill','currentColor');svg.appendChild(c);const t=document.createElementNS(NS,'text');t.setAttribute('x',xs[i]);t.setAttribute('y',H-12);t.setAttribute('text-anchor','middle');t.setAttribute('font-size','11');t.setAttribute('fill','currentColor');t.textContent=x.date.slice(5);svg.appendChild(t)});const yt=document.createElementNS(NS,'text');yt.setAttribute('x','5');yt.setAttribute('y','18');yt.setAttribute('font-size','12');yt.setAttribute('fill','currentColor');yt.textContent=fmt(max,2)+' L';svg.appendChild(yt)}
+$('themeBtn').addEventListener('click',()=>{document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark'});renderHistory();
+</script><div class="ccc-next"><a href="copd_compass_weight_bmi_tracker.html">← Weight / BMI</a><a class="primary" href="copd_compass_6mwt_tracker.html">Next: 6-Minute Walk →</a></div>
+</body></html>

@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#233F94">
+<title>HAGOS Tracker – COPD Compass Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#233F94;--purple:#68267E;--bg:#F5F6FA;--card:#FFFFFF;--ink:#1B1F2E;--muted:#555B70;--line:#D6DAE6;--accent:var(--navy);--accent-ink:#FFFFFF;--note-bg:#F1E9F5;--note-line:var(--purple);--danger:#A52A2A;--good:#236B3A}
+@media(prefers-color-scheme:dark){:root{--bg:#111521;--card:#1A2030;--ink:#F4F6FC;--muted:#B7BDCF;--line:#343B4E;--note-bg:#2A2030}}
+[data-theme="dark"]{--bg:#111521;--card:#1A2030;--ink:#F4F6FC;--muted:#B7BDCF;--line:#343B4E;--note-bg:#2A2030}
+[data-theme="light"]{--bg:#F5F6FA;--card:#FFFFFF;--ink:#1B1F2E;--muted:#555B70;--line:#D6DAE6;--note-bg:#F1E9F5}
+*{box-sizing:border-box}html{font-family:'Atkinson Hyperlegible',system-ui,sans-serif;background:var(--bg);color:var(--ink)}body{margin:0;background:var(--bg);line-height:1.45}.wrap{max-width:640px;margin:0 auto;padding:18px 14px 40px}.header{padding:8px 2px 16px}.brand{font-weight:700;color:var(--purple);font-size:15px;letter-spacing:.2px}.header h1{font-size:30px;line-height:1.12;margin:5px 0 8px;color:var(--navy)}.header p{margin:0;color:var(--muted);font-size:16px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:12px 0;box-shadow:0 1px 2px rgba(0,0,0,.03)}h2{font-size:20px;margin:0 0 13px;color:var(--navy)}h3{font-size:17px;margin:17px 0 9px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}label{display:block;font-weight:700;font-size:15px;margin:0 0 6px}.help{display:block;color:var(--muted);font-size:14px;margin-top:4px}input,select,textarea{width:100%;min-height:48px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);padding:10px 12px;font:inherit}textarea{min-height:90px;resize:vertical}.opts{display:grid;gap:9px}.opt{display:flex;align-items:flex-start;gap:10px;border:2px solid var(--line);border-radius:10px;padding:11px 12px;cursor:pointer}.opt input{width:20px;min-height:20px;margin-top:2px;accent-color:var(--navy)}.opt.sel{border-color:var(--navy);background:color-mix(in srgb,var(--navy) 8%,var(--card))}.qnum{font-weight:700;color:var(--purple);margin-right:5px}.qtext{font-weight:700}.scale{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-top:10px}.scale label{margin:0}.scale .opt{padding:9px 5px;display:block;text-align:center}.scale .opt input{display:block;margin:0 auto 5px}.section-intro{color:var(--muted);margin:-5px 0 13px}.result{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.score{border:1px solid var(--line);border-radius:12px;padding:12px;text-align:center;background:var(--bg)}.score .n{font-size:34px;font-weight:700;color:var(--navy);line-height:1}.score .l{font-size:13px;color:var(--muted);margin-top:5px}.profile{width:100%;height:210px}.actions{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.actions button{width:100%}button{min-height:48px;border:2px solid var(--accent);border-radius:10px;background:transparent;color:var(--accent);font:700 16px inherit;padding:9px 12px;cursor:pointer}button.primary,button.on{background:var(--accent);color:var(--accent-ink)}button.danger{border-color:var(--danger);color:var(--danger)}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid color-mix(in srgb,var(--purple) 45%,transparent);outline-offset:2px}.note{background:var(--note-bg);border-left:4px solid var(--note-line);padding:12px 13px;border-radius:9px;color:var(--ink)}.hist{display:grid;gap:9px}.hist-item{border:1px solid var(--line);border-radius:10px;padding:12px}.hist-head{display:flex;justify-content:space-between;gap:10px;font-weight:700}.hist-sub{color:var(--muted);font-size:14px;margin-top:4px}.small{font-size:13px;color:var(--muted)}.hidden{display:none!important}.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:var(--card);padding:10px 14px;border-radius:10px;z-index:20;box-shadow:0 4px 20px rgba(0,0,0,.2)}.fine{font-size:12px;color:var(--muted)}.checkrow{display:flex;align-items:center;gap:8px}.checkrow input{width:20px;min-height:20px}.trend{width:100%;overflow:auto}.trend svg{display:block;width:100%;height:240px}.table{width:100%;border-collapse:collapse}.table th,.table td{border-bottom:1px solid var(--line);padding:8px;text-align:left;font-size:14px}.table th{color:var(--muted)}@media(max-width:520px){.grid{grid-template-columns:1fr}.result{grid-template-columns:1fr 1fr}.scale{gap:4px}.scale .opt{font-size:13px;padding:7px 2px}.actions{grid-template-columns:1fr 1fr}}
+</style>
+
+<style id="ccc-navigation-style">
+.ccc-nav{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:0 0 16px;padding:10px 11px;background:var(--card,#fff);border:1px solid var(--line,#D6DAE6);border-radius:12px;box-shadow:0 2px 8px rgba(27,31,46,.05)}
+.ccc-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:6px 9px;border:1px solid var(--line,#D6DAE6);border-radius:8px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;font-size:13px;line-height:1.1;background:var(--card,#fff)}
+.ccc-nav a:hover{filter:brightness(.97)}
+.ccc-nav a.active{background:var(--navy,#233F94);border-color:var(--navy,#233F94);color:#fff}
+.ccc-nav .home{color:var(--purple,#68267E);border-color:var(--purple,#68267E)}
+.ccc-nav-label{width:100%;font-size:12px;font-weight:700;color:var(--muted,#555B70);margin:0 0 1px 2px;letter-spacing:.2px}
+.ccc-next{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:16px 0 4px;padding-top:14px;border-top:1px solid var(--line,#D6DAE6)}
+.ccc-next a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:8px 12px;border:2px solid var(--navy,#233F94);border-radius:9px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;background:var(--card,#fff)}
+.ccc-next a.primary{background:var(--navy,#233F94);color:#fff}
+@media(max-width:520px){.ccc-nav{gap:6px}.ccc-nav a{font-size:12px;padding:6px 8px}.ccc-next{display:grid;grid-template-columns:1fr}.ccc-next a{width:100%}}
+</style>
+</head>
+<body>
+<nav class="ccc-nav" aria-label="COPD Compass Care assessments">
+<div class="ccc-nav-label">COPD Compass Care Assessments</div>
+<a class="home" href="index.html">Assessment Center</a>
+<a href="copd_compass_bode_index.html">BODE Index</a>
+<a href="copd_compass_weight_bmi_tracker.html">Weight / BMI</a>
+<a href="copd_compass_pft_fev1_tracker.html">PFT / FEV₁</a>
+<a href="copd_compass_6mwt_tracker.html">6-Minute Walk</a>
+<a href="copd_compass_spo2_oxygen_tracker.html">SpO₂ / Oxygen</a>
+<a href="copd_compass_symptoms_tracker.html">Symptoms</a>
+<a href="copd_compass_exacerbation_tracker.html">Exacerbations</a>
+<a href="copd_compass_hospital_er_tracker.html">Hospital / ER</a>
+<a href="copd_compass_medication_tracker.html">Medications</a>
+<a href="copd_compass_hagos_tracker.html" class="active">HAGOS</a>
+</nav>
+<div class="wrap">
+<header class="header">
+<div class="brand">COPD COMPASS CARE</div>
+<h1>HAGOS Tracker</h1>
+<p>Copenhagen Hip and Groin Outcome Score. Complete the validated questionnaire for the past week, calculate the six subscale scores, and track change over time.</p>
+</header>
+
+<div class="card">
+<h2>Assessment</h2>
+<div class="grid">
+<div><label for="date">Assessment date</label><input id="date" type="date"></div>
+<div><label for="ref">Reference / label <span class="small">optional</span></label><input id="ref" type="text" placeholder="Baseline, follow-up, etc."></div>
+</div>
+<div class="note" style="margin-top:12px"><strong>Instructions:</strong> Answer the questions based on your hip and/or groin function during the past week. Select one response for every item. Higher HAGOS scores indicate better function and fewer problems. HAGOS produces six separate subscale scores rather than one overall total.</div>
+</div>
+
+<div id="questionnaire"></div>
+
+<div class="card" id="resultCard">
+<h2>Result</h2>
+<div id="resultEmpty" class="small">Complete all 37 questions, then select Calculate HAGOS.</div>
+<div id="resultBody" class="hidden">
+<div class="result" id="scores"></div>
+<div class="note" style="margin-top:12px">HAGOS subscale scores range from 0 to 100. A score of 100 indicates no hip/groin symptoms or disability for that dimension; 0 indicates extreme problems. The six dimensions should be interpreted separately. </div>
+<div id="changeBox" class="note hidden" style="margin-top:12px"></div>
+</div>
+</div>
+
+<div class="card">
+<h2>Actions</h2>
+<div class="actions">
+<button class="primary" id="calcBtn">Calculate HAGOS</button>
+<button id="shareBtn">Share result</button>
+<button id="copyBtn">Copy result</button>
+<button id="saveBtn">Save assessment</button>
+<button id="clearBtn">Clear current</button>
+<button id="backupBtn">Backup history</button>
+<button id="restoreBtn">Restore history</button>
+<button class="danger" id="clearHistoryBtn">Clear saved history</button>
+</div>
+<input id="restoreFile" type="file" accept="application/json" class="hidden">
+</div>
+
+<div class="card">
+<h2>Outcome profile</h2>
+<div id="trendEmpty" class="small">Save at least two assessments to see change over time.</div>
+<div id="trend" class="trend hidden"></div>
+</div>
+
+<div class="card">
+<h2>Saved assessments</h2>
+<div id="history" class="hist"><div class="small">No saved assessments yet.</div></div>
+</div>
+
+<div class="card">
+<h2>About HAGOS</h2>
+<p class="small">HAGOS is a patient-reported outcome measure for hip and/or groin disability. It contains 37 items across six subscales: Symptoms, Pain, Activities of Daily Living, Sport/Rec, Participation in Physical Activity, and Quality of Life. The official SORC-C page states that the instrument is intended to monitor individuals and change over time.</p>
+<p class="small"><strong>Source:</strong> Sports Orthopedic Research Center – Copenhagen (SORC-C), Hvidovre Hospital.</p>
+<p><a href="https://www.hvidovrehospital.dk/sorc-c/hagos/pages/default.aspx" target="_blank" rel="noopener">Official HAGOS source at SORC-C / Hvidovre Hospital</a></p>
+<p class="fine">COPD Compass Care uses its own interface and does not imply endorsement by Hvidovre Hospital or SORC-C. HAGOS is a hip/groin outcome measure and is not a COPD-specific instrument.</p>
+</div>
+
+<div class="card">
+<p class="fine">This tracker is for measurement and record-keeping. It does not diagnose a condition or replace professional assessment. Use the official HAGOS instructions and version applicable to your clinical or research setting.</p>
+</div>
+</div>
+<div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+<script>
+const KEY='ccc_hagos_v1';
+const sections=[
+{key:'symptoms',name:'Symptoms',items:[
+['S1','Do you feel discomfort in your hip and/or groin?',['Never','Rarely','Sometimes','Often','Always']],
+['S2','Do you hear clicking or any other type of noise from your hip and/or groin?',['Never','Rarely','Sometimes','Often','All the time']],
+['S3','Do you have difficulties stretching your legs far out to the side?',['None','Mild','Moderate','Severe','Extreme']],
+['S4','Do you have difficulties taking full strides when you walk?',['None','Mild','Moderate','Severe','Extreme']],
+['S5','Do you feel sudden catching or stabbing pain in your hip and/or groin?',['Never','Rarely','Sometimes','Often','Always']],
+['S6','How severe is your hip and/or groin stiffness after first awakening in the morning?',['None','Mild','Moderate','Severe','Extreme']],
+['S7','How severe is your hip and/or groin stiffness after sitting, lying or resting later in the day?',['None','Mild','Moderate','Severe','Extreme']]
+]},
+{key:'pain',name:'Pain',items:[
+['P1','How often is your hip and/or groin painful?',['Never','Monthly','Weekly','Daily','Always']],
+['P2','How often do you have pain in areas other than your hip and/or groin that you think may be related to your hip and/or groin problem?',['Never','Monthly','Weekly','Daily','Always']],
+['P3','How much hip and/or groin pain have you had when straightening your hip fully?',['None','Mild','Moderate','Severe','Extreme']],
+['P4','How much hip and/or groin pain have you had when bending your hip fully?',['None','Mild','Moderate','Severe','Extreme']],
+['P5','How much hip and/or groin pain have you had when walking up or down stairs?',['None','Mild','Moderate','Severe','Extreme']],
+['P6','How much hip and/or groin pain have you had at night while in bed, including pain that disturbs your sleep?',['None','Mild','Moderate','Severe','Extreme']],
+['P7','How much hip and/or groin pain have you had while sitting or lying?',['None','Mild','Moderate','Severe','Extreme']],
+['P8','How much hip and/or groin pain have you had while standing upright?',['None','Mild','Moderate','Severe','Extreme']],
+['P9','How much hip and/or groin pain have you had while walking on a hard surface such as asphalt or concrete?',['None','Mild','Moderate','Severe','Extreme']],
+['P10','How much hip and/or groin pain have you had while walking on an uneven surface?',['None','Mild','Moderate','Severe','Extreme']]
+]},
+{key:'adl',name:'Function in Daily Living (ADL)',items:[
+['A1','Walking up stairs',['None','Mild','Moderate','Severe','Extreme']],
+['A2','Bending down, for example to pick something up from the floor',['None','Mild','Moderate','Severe','Extreme']],
+['A3','Getting in or out of a car',['None','Mild','Moderate','Severe','Extreme']],
+['A4','Lying in bed, including turning over or maintaining the same hip position for a long time',['None','Mild','Moderate','Severe','Extreme']],
+['A5','Heavy domestic duties such as moving heavy boxes or scrubbing floors',['None','Mild','Moderate','Severe','Extreme']]
+]},
+{key:'sport',name:'Function in Sport and Recreation',items:[
+['SP1','Squatting',['None','Mild','Moderate','Severe','Extreme']],
+['SP2','Running',['None','Mild','Moderate','Severe','Extreme']],
+['SP3','Twisting or pivoting on your injured hip',['None','Mild','Moderate','Severe','Extreme']],
+['SP4','Walking on an uneven surface',['None','Mild','Moderate','Severe','Extreme']],
+['SP5','Running as fast as you can',['None','Mild','Moderate','Severe','Extreme']],
+['SP6','Bringing the leg forcefully forward and/or out to the side, such as in kicking or skating',['None','Mild','Moderate','Severe','Extreme']],
+['SP7','Sudden explosive movements involving quick footwork, such as acceleration, deceleration or changing direction',['None','Mild','Moderate','Severe','Extreme']],
+['SP8','Situations where the leg is stretched into an outer position, such as when the leg is placed as far away from the body as possible',['None','Mild','Moderate','Severe','Extreme']]
+]},
+{key:'pa',name:'Participation in Physical Activity',items:[
+['PA1','Are you able to participate in your preferred physical activities for as long as you would like?',['Always','Often','Sometimes','Rarely','Never']],
+['PA2','Are you able to participate in your preferred physical activities at your normal performance level?',['Always','Often','Sometimes','Rarely','Never']]
+]},
+{key:'qol',name:'Hip/Groin-related Quality of Life',items:[
+['Q1','How often are you aware of your hip and/or groin problem?',['Never','Monthly','Weekly','Daily','Constantly']],
+['Q2','Have you modified your lifestyle to avoid potentially damaging activities to your hip and/or groin?',['Not at all','Mildly','Moderately','Severely','Totally']],
+['Q3','In general, how much difficulty do you have with your hip and/or groin?',['None','Mild','Moderate','Severe','Extreme']],
+['Q4','Does your hip and/or groin problem affect your mood in a negative way?',['Never','Rarely','Sometimes','Often','All the time']],
+['Q5','Do you feel restricted because of your hip and/or groin problem?',['Never','Rarely','Sometimes','Often','All the time']]
+]}
+];
+const allItems=sections.flatMap(s=>s.items);
+function esc(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));}
+function render(){const root=document.getElementById('questionnaire');root.innerHTML=sections.map(sec=>`<div class="card"><h2>${esc(sec.name)}</h2><p class="section-intro">Answer based on the past week. Select one response for each item.</p>${sec.items.map(([id,q,opts])=>`<div style="margin:0 0 18px"><div class="qtext"><span class="qnum">${id}</span>${esc(q)}</div><div class="scale">${opts.map((o,i)=>`<label class="opt" data-for="${id}"><input type="radio" name="${id}" value="${i}"><span>${esc(o)}</span></label>`).join('')}</div></div>`).join('')}</div>`).join('');document.querySelectorAll('input[type=radio]').forEach(r=>r.addEventListener('change',e=>{document.querySelectorAll(`label[data-for="${CSS.escape(e.target.name)}"]`).forEach(x=>x.classList.remove('sel'));e.target.closest('.opt').classList.add('sel')}));}
+function answers(){const a={};allItems.forEach(([id])=>{const r=document.querySelector(`input[name="${id}"]:checked`);if(r)a[id]=Number(r.value)});return a;}
+function calc(a){const out={};sections.forEach(s=>{const vals=s.items.map(x=>a[x[0]]).filter(v=>Number.isFinite(v));if(vals.length!==s.items.length){out[s.key]=null;return}out[s.key]=Math.round((100-(vals.reduce((x,y)=>x+y,0)*100/(s.items.length*4)))*10)/10});return out;}
+function complete(a){return allItems.every(([id])=>Number.isFinite(a[id]));}
+function scoresHtml(sc){return sections.map(s=>`<div class="score"><div class="n">${sc[s.key]===null?'—':sc[s.key]}</div><div class="l">${esc(s.name)}</div></div>`).join('');}
+function getHist(){try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return []}}
+function setHist(h){localStorage.setItem(KEY,JSON.stringify(h));}
+function showToast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.remove('hidden');clearTimeout(showToast.t);showToast.t=setTimeout(()=>el.classList.add('hidden'),2200)}
+function current(){const a=answers();return {date:document.getElementById('date').value,ref:document.getElementById('ref').value.trim(),answers:a,scores:calc(a)};}
+function calculate(){const c=current();if(!complete(c.answers)){showToast('Please answer all 37 questions.');return null}document.getElementById('scores').innerHTML=scoresHtml(c.scores);document.getElementById('resultEmpty').classList.add('hidden');document.getElementById('resultBody').classList.remove('hidden');const h=getHist().filter(x=>x.date<=c.date);if(h.length){const prev=h[h.length-1];const changes=sections.map(s=>{const d=Math.round((c.scores[s.key]-prev.scores[s.key])*10)/10;return `${s.name}: ${d>0?'+':''}${d}`}).join(' • ');const cb=document.getElementById('changeBox');cb.textContent='Change from previous saved assessment: '+changes;cb.classList.remove('hidden')}return c;}
+function resultText(c){return `COPD Compass Care – HAGOS Assessment\nDate: ${c.date||'Not specified'}${c.ref?'\nLabel: '+c.ref:''}\n\nSymptoms: ${c.scores.symptoms}/100\nPain: ${c.scores.pain}/100\nADL: ${c.scores.adl}/100\nSport/Rec: ${c.scores.sport}/100\nPhysical Activity: ${c.scores.pa}/100\nQuality of Life: ${c.scores.qol}/100\n\nHAGOS scores are reported separately by subscale; there is no aggregate HAGOS total score.\nSource: SORC-C / Hvidovre Hospital\nhttps://www.hvidovrehospital.dk/sorc-c/hagos/pages/default.aspx`;}
+async function share(){const c=calculate();if(!c)return;const text=resultText(c);if(navigator.share){try{await navigator.share({title:'HAGOS Assessment',text})}catch(e){}}else{await navigator.clipboard.writeText(text);showToast('Result copied to clipboard.')}}
+async function copy(){const c=calculate();if(!c)return;await navigator.clipboard.writeText(resultText(c));showToast('Result copied.');}
+function save(){const c=calculate();if(!c)return;const h=getHist();h.push({...c,savedAt:new Date().toISOString()});h.sort((a,b)=>String(a.date).localeCompare(String(b.date)));setHist(h);renderHistory();renderTrend();showToast('Assessment saved.');}
+function clearCurrent(){document.querySelectorAll('input[type=radio]').forEach(r=>{r.checked=false;r.closest('.opt').classList.remove('sel')});document.getElementById('date').value=new Date().toISOString().slice(0,10);document.getElementById('ref').value='';document.getElementById('resultEmpty').classList.remove('hidden');document.getElementById('resultBody').classList.add('hidden');}
+function view(i){const h=getHist()[i];clearCurrent();document.getElementById('date').value=h.date||'';document.getElementById('ref').value=h.ref||'';Object.entries(h.answers).forEach(([id,v])=>{const r=document.querySelector(`input[name="${CSS.escape(id)}"][value="${v}"]`);if(r){r.checked=true;r.closest('.opt').classList.add('sel')}});calculate();window.scrollTo({top:0,behavior:'smooth'});}
+function compare(i){const h=getHist();if(i<1){showToast('Need a previous assessment to compare.');return}const a=h[i-1],b=h[i];const rows=sections.map(s=>`<tr><td>${esc(s.name)}</td><td>${a.scores[s.key]}</td><td>${b.scores[s.key]}</td><td>${(b.scores[s.key]-a.scores[s.key]).toFixed(1)}</td></tr>`).join('');const w=window.open('','_blank','noopener');if(w){w.document.write(`<title>HAGOS Comparison</title><style>body{font:16px Arial;padding:20px}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:8px;text-align:left}</style><h1>HAGOS Comparison</h1><p>${esc(a.date)} → ${esc(b.date)}</p><table><tr><th>Subscale</th><th>Previous</th><th>Current</th><th>Change</th></tr>${rows}</table>`);w.document.close()}}
+function remove(i){const h=getHist();h.splice(i,1);setHist(h);renderHistory();renderTrend();showToast('Assessment deleted.');}
+function renderHistory(){const root=document.getElementById('history'),h=getHist();if(!h.length){root.innerHTML='<div class="small">No saved assessments yet.</div>';return}root.innerHTML=h.slice().reverse().map((x,rev)=>{const i=h.length-1-rev;const summary=sections.map(s=>`${s.name.split(' ')[0]} ${x.scores[s.key]}`).join(' • ');return `<div class="hist-item"><div class="hist-head"><span>${esc(x.date||'Undated')}</span><span>${esc(x.ref||'Assessment')}</span></div><div class="hist-sub">${esc(summary)}</div><div class="actions" style="margin-top:9px"><button onclick="view(${i})">View</button><button onclick="compare(${i})">Compare</button><button onclick="navigator.clipboard.writeText(resultText(${JSON.stringify(x).replace(/</g,'\\u003c')}));showToast('Result copied.')">Share text</button><button class="danger" onclick="remove(${i})">Delete</button></div></div>`}).join('')}
+function renderTrend(){const h=getHist().slice().sort((a,b)=>String(a.date).localeCompare(String(b.date)));const el=document.getElementById('trend');if(h.length<2){el.classList.add('hidden');document.getElementById('trendEmpty').classList.remove('hidden');return}document.getElementById('trendEmpty').classList.add('hidden');el.classList.remove('hidden');const W=600,H=230,pad=45;let lines='';sections.forEach((s,si)=>{const pts=h.map((x,i)=>{const xx=pad+(i*(W-2*pad)/Math.max(1,h.length-1));const yy=H-pad-(x.scores[s.key]/100)*(H-2*pad);return `${xx},${yy}`}).join(' ');lines+=`<polyline points="${pts}" fill="none" stroke="hsl(${si*55},55%,45%)" stroke-width="3"/>`});const dots=h.map((x,i)=>{const xx=pad+(i*(W-2*pad)/Math.max(1,h.length-1));return `<text x="${xx}" y="${H-15}" text-anchor="middle" font-size="11">${esc(x.date||'')}</text>`}).join('');el.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="HAGOS subscale trend chart"><line x1="${pad}" y1="${pad}" x2="${pad}" y2="${H-pad}" stroke="var(--line)"/><line x1="${pad}" y1="${H-pad}" x2="${W-pad}" y2="${H-pad}" stroke="var(--line)"/><text x="8" y="${pad+5}" font-size="12">100</text><text x="18" y="${H-pad+5}" font-size="12">0</text>${lines}${dots}</svg><div class="small">Each line represents one HAGOS subscale. Higher scores indicate better function / fewer problems.</div>`}
+function backup(){const blob=new Blob([JSON.stringify(getHist(),null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='copd-compass-hagos-backup.json';a.click();URL.revokeObjectURL(a.href);}
+function restore(){document.getElementById('restoreFile').click()}
+document.getElementById('restoreFile').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const data=JSON.parse(r.result);if(!Array.isArray(data))throw Error();setHist(data);renderHistory();renderTrend();showToast('History restored.')}catch{showToast('Invalid backup file.')}};r.readAsText(f);e.target.value=''});
+document.getElementById('calcBtn').onclick=calculate;document.getElementById('shareBtn').onclick=share;document.getElementById('copyBtn').onclick=copy;document.getElementById('saveBtn').onclick=save;document.getElementById('clearBtn').onclick=clearCurrent;document.getElementById('backupBtn').onclick=backup;document.getElementById('restoreBtn').onclick=restore;document.getElementById('clearHistoryBtn').onclick=()=>{if(confirm('Delete all saved HAGOS assessments?')){setHist([]);renderHistory();renderTrend();showToast('Saved history cleared.')}};
+render();document.getElementById('date').value=new Date().toISOString().slice(0,10);renderHistory();renderTrend();
+</script>
+<div class="ccc-next"><a href="copd_compass_medication_tracker.html">← Medications</a><a class="primary" href="index.html">Back to Assessment Center →</a></div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Exacerbation Tracker – COPD Compass Care</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+:root{--navy:#233F94;--purple:#68267E;--bg:#F5F6FA;--card:#fff;--ink:#1B1F2E;--muted:#555B70;--line:#D6DAE6;--accent:var(--navy);--accent-ink:#fff;--note-bg:#F1E9F5;--note-line:var(--purple)}
+@media(prefers-color-scheme:dark){:root{--bg:#111522;--card:#1A1F2E;--ink:#F4F5F8;--muted:#B9BFCE;--line:#353C4F;--note-bg:#292033}}
+[data-theme=dark]{--bg:#111522;--card:#1A1F2E;--ink:#F4F5F8;--muted:#B9BFCE;--line:#353C4F;--note-bg:#292033}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Atkinson Hyperlegible',Arial,sans-serif;font-size:17px;line-height:1.45}.wrap{max-width:640px;margin:auto;padding:18px}.brand{font-weight:700;color:var(--purple);letter-spacing:.2px}h1{font-size:32px;line-height:1.1;margin:6px 0}h2{font-size:22px;margin:0 0 10px}p{margin:8px 0;color:var(--muted)}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:14px 0;box-shadow:0 1px 2px #00000008}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}label{display:block;font-weight:700;margin-bottom:5px}input,select,textarea{width:100%;min-height:48px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);padding:10px 12px;font:inherit}textarea{min-height:90px;resize:vertical}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px}.buttons button{min-height:48px}button{min-height:44px;border:2px solid var(--accent);border-radius:10px;background:transparent;color:var(--accent);font:700 16px inherit;padding:9px 12px;cursor:pointer}.primary{background:var(--accent)!important;color:#fff!important;border-color:var(--accent)!important}.danger{border-color:#a52a2a;color:#a52a2a}.score{display:flex;align-items:baseline;gap:10px}.score .n{font-size:58px;font-weight:700;color:var(--accent);line-height:1}.muted{color:var(--muted)}.note{background:var(--note-bg);border-left:5px solid var(--note-line);padding:12px 14px;border-radius:8px}.row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding:8px 0}.row:last-child{border-bottom:0}.hist{border:1px solid var(--line);border-radius:10px;padding:12px;margin:9px 0}.hist strong{display:block}.small{font-size:14px}.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 15px;border-radius:10px;display:none;z-index:5}.chart{width:100%;height:220px;border:1px solid var(--line);border-radius:10px;background:var(--card)}.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:3px 9px;font-size:14px;margin:2px 4px 2px 0}.warning{border-left-color:#9b5b00;background:#fff5df}.success{border-left-color:#317a45;background:#edf7ef}@media(max-width:480px){.grid{grid-template-columns:1fr}.full{grid-column:auto}.buttons{grid-template-columns:1fr}h1{font-size:29px}}
+</style>
+<style id="ccc-navigation-style">
+.ccc-nav{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:0 0 16px;padding:10px 11px;background:var(--card,#fff);border:1px solid var(--line,#D6DAE6);border-radius:12px;box-shadow:0 2px 8px rgba(27,31,46,.05)}
+.ccc-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:6px 9px;border:1px solid var(--line,#D6DAE6);border-radius:8px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;font-size:13px;line-height:1.1;background:var(--card,#fff)}
+.ccc-nav a:hover{filter:brightness(.97)}
+.ccc-nav a.active{background:var(--navy,#233F94);border-color:var(--navy,#233F94);color:#fff}
+.ccc-nav .home{color:var(--purple,#68267E);border-color:var(--purple,#68267E)}
+.ccc-nav-label{width:100%;font-size:12px;font-weight:700;color:var(--muted,#555B70);margin:0 0 1px 2px;letter-spacing:.2px}
+.ccc-next{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:16px 0 4px;padding-top:14px;border-top:1px solid var(--line,#D6DAE6)}
+.ccc-next a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:8px 12px;border:2px solid var(--navy,#233F94);border-radius:9px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;background:var(--card,#fff)}
+.ccc-next a.primary{background:var(--navy,#233F94);color:#fff}
+@media(max-width:520px){.ccc-nav{gap:6px}.ccc-nav a{font-size:12px;padding:6px 8px}.ccc-next{display:grid;grid-template-columns:1fr}.ccc-next a{width:100%}}
+</style>
+</head>
+<body>
+<nav class="ccc-nav" aria-label="COPD Compass Care assessments">
+<div class="ccc-nav-label">COPD Compass Care Assessments</div>
+<a class="home" href="index.html">Assessment Center</a>
+<a href="copd_compass_bode_index.html">BODE Index</a>
+<a href="copd_compass_weight_bmi_tracker.html">Weight / BMI</a>
+<a href="copd_compass_pft_fev1_tracker.html">PFT / FEV₁</a>
+<a href="copd_compass_6mwt_tracker.html">6-Minute Walk</a>
+<a href="copd_compass_spo2_oxygen_tracker.html">SpO₂ / Oxygen</a>
+<a href="copd_compass_symptoms_tracker.html">Symptoms</a>
+<a href="copd_compass_exacerbation_tracker.html" class="active">Exacerbations</a>
+<a href="copd_compass_hospital_er_tracker.html">Hospital / ER</a>
+<a href="copd_compass_medication_tracker.html">Medications</a>
+<a href="copd_compass_hagos_tracker.html">HAGOS</a>
+</nav><main class="wrap">
+<header><div class="brand">COPD Compass Care</div><h1>Exacerbation Tracker</h1><p>Document episodes of worsening respiratory symptoms, what happened, what treatment was used, and what level of care was required.</p></header>
+<section class="card"><h2>Episode</h2><div class="grid">
+<div><label for="date">Start date</label><input id="date" type="date"></div><div><label for="time">Start time</label><input id="time" type="time"></div>
+<div><label for="endDate">End/resolution date</label><input id="endDate" type="date"></div><div><label for="duration">Approx. duration (days)</label><input id="duration" type="number" min="0" step="0.5"></div>
+<div class="full"><label for="status">Episode status</label><select id="status"><option>Suspected exacerbation</option><option>Clinician-confirmed exacerbation</option><option>Symptoms worsened but not confirmed as an exacerbation</option><option>Other respiratory episode</option></select></div>
+</div></section>
+<section class="card"><h2>Symptoms and change from usual</h2><div class="grid">
+<div><label for="dyspnea">Dyspnea severity</label><select id="dyspnea"><option value="0">0 · None</option><option value="1">1 · Mild</option><option value="2">2 · Moderate</option><option value="3">3 · Severe</option><option value="4">4 · Very severe</option><option value="5">5 · Extreme</option><option value="6">6 · Worst imaginable</option><option value="7">7</option><option value="8">8</option><option value="9">9</option><option value="10">10 · Worst imaginable</option></select></div>
+<div><label for="cough">Cough change</label><select id="cough"><option>No change</option><option>Worse than usual</option><option>Much worse</option></select></div>
+<div><label for="sputumVolume">Sputum volume</label><select id="sputumVolume"><option>No increase</option><option>Increased</option><option>Markedly increased</option></select></div>
+<div><label for="sputumColor">Sputum color</label><select id="sputumColor"><option>No change</option><option>Clear/white</option><option>Yellow</option><option>Green</option><option>Brown/rust</option><option>Blood-streaked</option><option>Other</option></select></div>
+<div><label for="wheeze">Wheezing</label><select id="wheeze"><option>No change</option><option>Worse than usual</option><option>Much worse</option></select></div>
+<div><label for="sleep">Sleep affected</label><select id="sleep"><option>No</option><option>Yes</option></select></div>
+<div><label for="fever">Fever/chills</label><select id="fever"><option>No</option><option>Yes</option></select></div>
+<div><label for="trigger">Suspected trigger</label><select id="trigger"><option>Unknown</option><option>Respiratory infection</option><option>Environmental exposure/air pollution</option><option>Weather/temperature</option><option>Medication issue</option><option>Allergy/irritant</option><option>Other</option></select></div>
+</div></section>
+<section class="card"><h2>Measurements</h2><div class="grid">
+<div><label for="spo2">Lowest SpO₂ during episode (%)</label><input id="spo2" type="number" min="50" max="100" step="1"></div><div><label for="oxygen">Usual oxygen flow (L/min)</label><input id="oxygen" type="number" min="0" step="0.1"></div>
+<div><label for="peakOxygen">Highest oxygen flow used (L/min)</label><input id="peakOxygen" type="number" min="0" step="0.1"></div><div><label for="hr">Highest/representative HR (bpm)</label><input id="hr" type="number" min="30" max="250"></div>
+<div><label for="temp">Temperature (°F)</label><input id="temp" type="number" step="0.1"></div><div><label for="abg">ABG obtained?</label><select id="abg"><option>No</option><option>Yes</option></select></div>
+<div class="full"><label for="tests">Other testing</label><input id="tests" placeholder="e.g., chest X-ray, viral testing, labs, CT, ECG"></div>
+</div></section>
+<section class="card"><h2>Treatment and healthcare use</h2><div class="grid">
+<div class="full"><label for="care">Highest level of care</label><select id="care"><option>Managed at home</option><option>Telephone/telehealth contact</option><option>Urgent care</option><option>Emergency department</option><option>Hospital admission</option><option>ICU/critical care</option></select></div>
+<div><label for="steroids">Systemic steroids</label><select id="steroids"><option>No</option><option>Yes</option><option>Unknown</option></select></div><div><label for="antibiotics">Antibiotics</label><select id="antibiotics"><option>No</option><option>Yes</option><option>Unknown</option></select></div>
+<div><label for="bronchodilator">Rescue bronchodilator increased?</label><select id="bronchodilator"><option>No</option><option>Yes</option><option>Unknown</option></select></div><div><label for="oxygenEsc">Oxygen requirement increased?</label><select id="oxygenEsc"><option>No</option><option>Yes</option><option>Unknown</option></select></div>
+<div><label for="noninvasive">Noninvasive ventilation used?</label><select id="noninvasive"><option>No</option><option>Yes</option><option>Unknown</option></select></div><div><label for="intubation">Intubation/mechanical ventilation?</label><select id="intubation"><option>No</option><option>Yes</option><option>Unknown</option></select></div>
+<div class="full"><label for="hospitalDays">Hospital length of stay (days)</label><input id="hospitalDays" type="number" min="0" step="0.5"></div>
+</div></section>
+<section class="card"><h2>Possible alternative or associated diagnosis</h2><p class="small">Some conditions can mimic or worsen an apparent COPD exacerbation. Record what clinicians found rather than assuming every episode was COPD.</p><div class="grid">
+<div><label for="pneumonia">Pneumonia diagnosed?</label><select id="pneumonia"><option>No</option><option>Yes</option><option>Suspected</option><option>Unknown</option></select></div><div><label for="pe">Pulmonary embolism diagnosed?</label><select id="pe"><option>No</option><option>Yes</option><option>Suspected</option><option>Unknown</option></select></div>
+<div><label for="cardiac">Cardiac cause/contributor?</label><select id="cardiac"><option>No</option><option>Yes</option><option>Suspected</option><option>Unknown</option></select></div><div><label for="infection">Respiratory infection identified?</label><select id="infection"><option>No</option><option>Yes</option><option>Suspected</option><option>Unknown</option></select></div>
+</div></section>
+<section class="card"><h2>Notes</h2><textarea id="notes" placeholder="What changed from your baseline? What did your clinician say? What helped? Any discharge instructions or follow-up?"></textarea></section>
+<section class="card"><h2>Result</h2><div id="result"><p class="muted">Enter the episode information, then select Calculate.</p></div></section>
+<section class="card"><h2>Clinical context</h2><div class="note"><strong>Tracking tool, not a diagnosis.</strong><p>GOLD 2026 emphasizes documenting symptom worsening, clinical assessment, potential mimics, measurements, treatment, and place of care. This tracker records those elements without assigning a home-generated exacerbation severity diagnosis.</p></div></section>
+<section class="card"><h2>Trend</h2><canvas id="chart" class="chart" aria-label="Exacerbation trend chart"></canvas></section>
+<section class="card"><h2>Actions</h2><div class="buttons"><button class="primary" onclick="calculate()">Calculate</button><button onclick="save()">Save assessment</button><button onclick="share()">Share result</button><button onclick="copyResult()">Copy result</button><button onclick="backup()">Backup history</button><button onclick="document.getElementById('restore').click()">Restore history</button><button onclick="clearCurrent()">Clear current</button><button class="danger" onclick="clearHistory()">Clear saved history</button></div><input id="restore" type="file" accept="application/json" hidden onchange="restore(event)"></section>
+<section class="card"><h2>Saved episodes</h2><div id="history"></div></section>
+<footer class="small muted">COPD Compass Care · Guided Support and Practical Care for COPD<br>For personal tracking and discussion with healthcare professionals. Not a substitute for medical care.</footer>
+</main><div id="toast" class="toast"></div>
+<script>
+const KEY='ccc_exacerbation_v1'; const $=id=>document.getElementById(id);
+const fields=['date','time','endDate','duration','status','dyspnea','cough','sputumVolume','sputumColor','wheeze','sleep','fever','trigger','spo2','oxygen','peakOxygen','hr','temp','abg','tests','care','steroids','antibiotics','bronchodilator','oxygenEsc','noninvasive','intubation','hospitalDays','pneumonia','pe','cardiac','infection','notes'];
+let history=JSON.parse(localStorage.getItem(KEY)||'[]');
+$('date').value=new Date().toISOString().slice(0,10);
+function data(){let d={};fields.forEach(f=>d[f]=$(f).value);return d}
+function level(d){if(['Hospital admission','ICU/critical care'].includes(d.care))return d.care==='ICU/critical care'?'Severe / critical care':'Hospitalized';if(d.care==='Emergency department')return 'Emergency department';if(d.care==='Urgent care')return 'Urgent care';return 'Home/ambulatory'}
+function calc(d){let markers=0;if(Number(d.dyspnea)>=3)markers++;if(d.cough!=='No change')markers++;if(d.sputumVolume!=='No increase')markers++;if(d.sputumColor!=='No change'&&d.sputumColor!=='Clear/white')markers++;if(d.wheeze!=='No change')markers++;if(d.sleep==='Yes')markers++;if(d.oxygenEsc==='Yes')markers++;return markers}
+function calculate(){let d=data();d.markers=calc(d);d.careLevel=level(d);d.id=Date.now();$('result').innerHTML=`<div class="score"><span class="n">${d.markers}</span><span>documented worsening features</span></div><div class="row"><span>Episode status</span><strong>${d.status}</strong></div><div class="row"><span>Highest care level</span><strong>${d.care}</strong></div><div class="row"><span>Duration</span><strong>${d.duration?d.duration+' days':'Not entered'}</strong></div><div class="row"><span>Lowest SpO₂</span><strong>${d.spo2?d.spo2+'%':'Not entered'}</strong></div><div class="row"><span>Oxygen increase</span><strong>${d.oxygenEsc}</strong></div><div class="row"><span>Systemic steroids</span><strong>${d.steroids}</strong></div><div class="row"><span>Antibiotics</span><strong>${d.antibiotics}</strong></div><p class="small muted">The number above is a COPD Compass Care tracking count of selected worsening features. It is <strong>not</strong> a validated exacerbation severity score.</p>`;return d}
+function text(d){return `COPD Compass Care – Exacerbation Tracker\nStart: ${d.date||'Not entered'}${d.time?' '+d.time:''}\nStatus: ${d.status}\nHighest care: ${d.care}\nDuration: ${d.duration?d.duration+' days':'Not entered'}\nDyspnea: ${d.dyspnea}/10\nSputum volume: ${d.sputumVolume}\nSputum color: ${d.sputumColor}\nLowest SpO₂: ${d.spo2?d.spo2+'%':'Not entered'}\nOxygen requirement increased: ${d.oxygenEsc}\nSystemic steroids: ${d.steroids}\nAntibiotics: ${d.antibiotics}\nNIV: ${d.noninvasive}\nHospital stay: ${d.hospitalDays?d.hospitalDays+' days':'None/unknown'}\nPossible pneumonia: ${d.pneumonia}\nPossible PE: ${d.pe}\nPossible cardiac contributor: ${d.cardiac}`}
+function save(){let d=calculate();history.unshift({...d,id:Date.now()});localStorage.setItem(KEY,JSON.stringify(history));render();toast('Episode saved')}
+function share(){let d=calculate();if(navigator.share)navigator.share({title:'COPD Compass Care – Exacerbation',text:text(d)});else navigator.clipboard.writeText(text(d)).then(()=>toast('Result copied'))}
+function copyResult(){navigator.clipboard.writeText(text(data())).then(()=>toast('Result copied')).catch(()=>toast('Copy unavailable'))}
+function backup(){let blob=new Blob([JSON.stringify(history,null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='copd-compass-exacerbation-backup.json';a.click();URL.revokeObjectURL(a.href)}
+function restore(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!Array.isArray(x))throw 0;history=x;localStorage.setItem(KEY,JSON.stringify(history));render();toast('History restored')}catch{toast('Invalid backup file')}};r.readAsText(f)}
+function clearCurrent(){fields.forEach(f=>{$(f).value=''});$('date').value=new Date().toISOString().slice(0,10);$('result').innerHTML='<p class="muted">Enter the episode information, then select Calculate.</p>';toast('Current assessment cleared')}
+function clearHistory(){if(confirm('Delete all saved exacerbation episodes?')){history=[];localStorage.removeItem(KEY);render();toast('History cleared')}}
+function del(id){history=history.filter(x=>x.id!==id);localStorage.setItem(KEY,JSON.stringify(history));render();toast('Episode deleted')}
+function load(id){let d=history.find(x=>x.id===id);if(!d)return;fields.forEach(f=>{$(f).value=d[f]??''});calculate();scrollTo(0,0);toast('Episode loaded')}
+function compare(id){let a=history.find(x=>x.id===id),b=history.find(x=>x.id!==id);if(!a||!b){toast('Need at least two saved episodes');return}alert(`Episode comparison\n\n${a.date}: ${a.care}, ${a.status}\n${b.date}: ${b.care}, ${b.status}\n\nDuration: ${a.duration||'n/a'} vs ${b.duration||'n/a'} days\nLowest SpO₂: ${a.spo2||'n/a'}% vs ${b.spo2||'n/a'}%`)}
+function shareSaved(id){let d=history.find(x=>x.id===id);if(navigator.share)navigator.share({title:'COPD Compass Care – Exacerbation',text:text(d)});else navigator.clipboard.writeText(text(d)).then(()=>toast('Result copied'))}
+function render(){let h=$('history');if(!history.length){h.innerHTML='<p class="muted">No saved episodes yet.</p>'}else h.innerHTML=history.map(x=>`<div class="hist"><strong>${x.date||'Undated'}${x.time?' · '+x.time:''}</strong><span>${x.care} · ${x.status}</span><br><span class="small">Lowest SpO₂: ${x.spo2?x.spo2+'%':'not entered'} · Duration: ${x.duration?x.duration+' days':'not entered'}</span><div class="buttons" style="margin-top:8px"><button onclick="load(${x.id})">View</button><button onclick="compare(${x.id})">Compare</button><button onclick="shareSaved(${x.id})">Share</button><button class="danger" onclick="del(${x.id})">Delete</button></div></div>`).join('');draw()}
+function draw(){let c=$('chart'),ctx=c.getContext('2d'),w=c.clientWidth,h=220,dpr=devicePixelRatio||1;c.width=w*dpr;c.height=h*dpr;ctx.scale(dpr,dpr);ctx.clearRect(0,0,w,h);let arr=history.slice().reverse();if(arr.length<2){ctx.fillStyle=getComputedStyle(document.body).color;ctx.font='16px Atkinson Hyperlegible';ctx.fillText('Save at least two episodes to see a trend.',18,110);return}let pad=32, max=Math.max(1,...arr.map(x=>Number(x.spo2)||0)), min=Math.min(...arr.map(x=>Number(x.spo2)||0));if(max===min){max+=1;min-=1}ctx.strokeStyle='#D6DAE6';ctx.beginPath();ctx.moveTo(pad,15);ctx.lineTo(pad,h-25);ctx.lineTo(w-10,h-25);ctx.stroke();ctx.strokeStyle='#233F94';ctx.lineWidth=3;ctx.beginPath();arr.forEach((x,i)=>{let val=Number(x.spo2);if(!val)return;let xx=pad+i*(w-pad-20)/(arr.length-1),yy=15+(max-val)/(max-min)*(h-40);i?ctx.lineTo(xx,yy):ctx.moveTo(xx,yy)});ctx.stroke();ctx.fillStyle='#68267E';arr.forEach((x,i)=>{let val=Number(x.spo2);if(!val)return;let xx=pad+i*(w-pad-20)/(arr.length-1),yy=15+(max-val)/(max-min)*(h-40);ctx.beginPath();ctx.arc(xx,yy,4,0,Math.PI*2);ctx.fill()});ctx.fillStyle=getComputedStyle(document.body).color;ctx.font='13px Atkinson Hyperlegible';ctx.fillText('Lowest SpO₂ by episode',pad,15)}
+function toast(s){let t=$('toast');t.textContent=s;t.style.display='block';setTimeout(()=>t.style.display='none',1800)}
+render();window.addEventListener('resize',draw);
+</script><div class="ccc-next"><a href="copd_compass_symptoms_tracker.html">← Symptoms</a><a class="primary" href="copd_compass_hospital_er_tracker.html">Next: Hospital / ER →</a></div>
+</body></html>

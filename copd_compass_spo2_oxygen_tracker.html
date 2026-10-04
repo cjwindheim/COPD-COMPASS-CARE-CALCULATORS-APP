@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en" data-theme="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SpO₂ / Oxygen Tracker – COPD Compass Care</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#233F94;--purple:#68267E;--bg:#F5F6FA;--card:#FFF;--ink:#1B1F2E;--muted:#555B70;--line:#D6DAE6;--accent:var(--navy);--accent-ink:#FFF;--note-bg:#F1E9F5;--note-line:var(--purple);--danger:#A32626}
+@media(prefers-color-scheme:dark){:root{--bg:#111522;--card:#181D2C;--ink:#F4F6FC;--muted:#B7BDCC;--line:#343B50;--note-bg:#281D30}}
+[data-theme="dark"]{--bg:#111522;--card:#181D2C;--ink:#F4F6FC;--muted:#B7BDCC;--line:#343B50;--note-bg:#281D30}
+[data-theme="light"]{--bg:#F5F6FA;--card:#FFF;--ink:#1B1F2E;--muted:#555B70;--line:#D6DAE6;--note-bg:#F1E9F5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:"Atkinson Hyperlegible",Arial,sans-serif;font-size:17px;line-height:1.4}.wrap{max-width:640px;margin:auto;padding:18px}.brand{font-weight:700;color:var(--purple);font-size:15px;letter-spacing:.2px}h1{font-size:30px;line-height:1.08;margin:5px 0 8px}h2{font-size:21px;margin:0 0 12px}h3{font-size:18px;margin:0 0 8px}.lead{color:var(--muted);margin:0 0 18px}.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;margin:0 0 14px;box-shadow:0 1px 2px #00000008}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.full{grid-column:1/-1}label{display:block;font-weight:700;margin:0 0 6px}input,select,textarea{width:100%;min-height:48px;border:2px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);padding:10px 12px;font:inherit}textarea{min-height:90px;resize:vertical}.hint{font-size:14px;color:var(--muted);margin-top:5px}.unitrow{display:flex;gap:8px;align-items:end}.unitrow>div:first-child{flex:1}.toggle{display:flex;gap:0}.toggle button{border-radius:0;margin:0}.toggle button:first-child{border-radius:10px 0 0 10px}.toggle button:last-child{border-radius:0 10px 10px 0}button{min-height:46px;border:2px solid var(--accent);border-radius:10px;background:transparent;color:var(--accent);font:700 16px inherit;padding:9px 13px;cursor:pointer}button:hover{filter:brightness(.96)}button.on,button.primary{background:var(--accent);color:var(--accent-ink)}button.danger{border-color:var(--danger);color:var(--danger)}button.small{min-height:38px;font-size:15px;padding:6px 10px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions .wide{grid-column:1/-1}.optgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.opt{position:relative}.opt input{position:absolute;opacity:0}.opt label{border:2px solid var(--line);border-radius:10px;padding:11px 12px;min-height:48px;cursor:pointer}.opt input:checked+label{border-color:var(--accent);background:#233F9410}.score{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}.score .n{font-size:64px;font-weight:700;line-height:.95;color:var(--navy)}.score .unit{font-size:20px;font-weight:700}.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.stat{border:1px solid var(--line);border-radius:10px;padding:11px}.stat b{display:block;font-size:23px}.stat span{color:var(--muted);font-size:14px}.note{background:var(--note-bg);border-left:4px solid var(--note-line);padding:12px 13px;border-radius:8px;color:var(--ink);font-size:15px}.resultbar{height:12px;border-radius:8px;background:var(--line);overflow:hidden;margin:12px 0}.resultbar i{display:block;height:100%;background:var(--navy);width:0}.hist{display:flex;flex-direction:column;gap:9px}.histitem{border:1px solid var(--line);border-radius:10px;padding:11px}.histtop{display:flex;justify-content:space-between;gap:8px;align-items:center}.histmeta{color:var(--muted);font-size:14px}.histbuttons{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}.empty{color:var(--muted);padding:10px 0}.hidden{display:none!important}.footer{font-size:13px;color:var(--muted);padding:4px 2px 30px}.toast{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 14px;border-radius:999px;display:none;z-index:5}.theme{float:right}.chart{width:100%;height:190px;border:1px solid var(--line);border-radius:10px;background:var(--card)}.comparebox{display:grid;grid-template-columns:1fr 1fr;gap:10px}.comparebox .stat{min-height:90px}@media(max-width:520px){.grid,.statgrid,.comparebox{grid-template-columns:1fr}.optgrid{grid-template-columns:1fr}.actions{grid-template-columns:1fr}.actions .wide{grid-column:auto}}
+</style>
+
+<style id="ccc-navigation-style">
+.ccc-nav{display:flex;flex-wrap:wrap;gap:7px;align-items:center;margin:0 0 16px;padding:10px 11px;background:var(--card,#fff);border:1px solid var(--line,#D6DAE6);border-radius:12px;box-shadow:0 2px 8px rgba(27,31,46,.05)}
+.ccc-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:34px;padding:6px 9px;border:1px solid var(--line,#D6DAE6);border-radius:8px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;font-size:13px;line-height:1.1;background:var(--card,#fff)}
+.ccc-nav a:hover{filter:brightness(.97)}
+.ccc-nav a.active{background:var(--navy,#233F94);border-color:var(--navy,#233F94);color:#fff}
+.ccc-nav .home{color:var(--purple,#68267E);border-color:var(--purple,#68267E)}
+.ccc-nav-label{width:100%;font-size:12px;font-weight:700;color:var(--muted,#555B70);margin:0 0 1px 2px;letter-spacing:.2px}
+.ccc-next{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:16px 0 4px;padding-top:14px;border-top:1px solid var(--line,#D6DAE6)}
+.ccc-next a{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:8px 12px;border:2px solid var(--navy,#233F94);border-radius:9px;text-decoration:none;color:var(--navy,#233F94);font-weight:700;background:var(--card,#fff)}
+.ccc-next a.primary{background:var(--navy,#233F94);color:#fff}
+@media(max-width:520px){.ccc-nav{gap:6px}.ccc-nav a{font-size:12px;padding:6px 8px}.ccc-next{display:grid;grid-template-columns:1fr}.ccc-next a{width:100%}}
+</style>
+</head>
+<body>
+<nav class="ccc-nav" aria-label="COPD Compass Care assessments">
+<div class="ccc-nav-label">COPD Compass Care Assessments</div>
+<a class="home" href="index.html">Assessment Center</a>
+<a href="copd_compass_bode_index.html">BODE Index</a>
+<a href="copd_compass_weight_bmi_tracker.html">Weight / BMI</a>
+<a href="copd_compass_pft_fev1_tracker.html">PFT / FEV₁</a>
+<a href="copd_compass_6mwt_tracker.html">6-Minute Walk</a>
+<a href="copd_compass_spo2_oxygen_tracker.html" class="active">SpO₂ / Oxygen</a>
+<a href="copd_compass_symptoms_tracker.html">Symptoms</a>
+<a href="copd_compass_exacerbation_tracker.html">Exacerbations</a>
+<a href="copd_compass_hospital_er_tracker.html">Hospital / ER</a>
+<a href="copd_compass_medication_tracker.html">Medications</a>
+<a href="copd_compass_hagos_tracker.html">HAGOS</a>
+</nav>
+<div class="wrap">
+<header>
+<button class="theme small" id="themeBtn" type="button">Theme</button>
+<div class="brand">COPD COMPASS CARE</div>
+<h1>SpO₂ / Oxygen Tracker</h1>
+<p class="lead">Track oxygen saturation, pulse, supplemental oxygen, symptoms, and trends over time. Designed for recording measurements, not diagnosing or changing treatment.</p>
+</header>
+
+<section class="card">
+<h2>Assessment</h2>
+<div class="grid">
+<div><label for="date">Date</label><input id="date" type="date"></div>
+<div><label for="time">Time</label><input id="time" type="time"></div>
+<div class="full"><label>Measurement context</label><div class="optgrid">
+<div class="opt"><input id="ctxRest" name="ctx" value="rest" type="radio" checked><label for="ctxRest">Resting</label></div>
+<div class="opt"><input id="ctxActivity" name="ctx" value="activity" type="radio"><label for="ctxActivity">During activity</label></div>
+<div class="opt"><input id="ctxPost" name="ctx" value="post" type="radio"><label for="ctxPost">After activity</label></div>
+<div class="opt"><input id="ctxSleep" name="ctx" value="sleep" type="radio"><label for="ctxSleep">Sleep / overnight</label></div>
+<div class="opt"><input id="ctxOther" name="ctx" value="other" type="radio"><label for="ctxOther">Other</label></div>
+</div></div>
+<div><label for="spo2">SpO₂ (%)</label><input id="spo2" type="number" min="50" max="100" step="1" placeholder="e.g. 94"></div>
+<div><label for="pulse">Pulse / HR (bpm)</label><input id="pulse" type="number" min="20" max="250" step="1" placeholder="e.g. 82"></div>
+<div><label for="device">Device / source</label><select id="device"><option value="">Select</option><option>Fingertip pulse oximeter</option><option>Wrist / wearable</option><option>Hospital / clinic monitor</option><option>Home oxygen monitor</option><option>Other</option></select></div>
+<div><label for="site">Measurement site</label><select id="site"><option value="">Select</option><option>Finger</option><option>Ear</option><option>Other</option></select></div>
+</div>
+</section>
+
+<section class="card">
+<h2>Supplemental Oxygen</h2>
+<div class="optgrid">
+<div class="opt"><input id="o2No" name="o2" value="no" type="radio" checked><label for="o2No">No supplemental oxygen</label></div>
+<div class="opt"><input id="o2Yes" name="o2" value="yes" type="radio"><label for="o2Yes">Using oxygen</label></div>
+</div>
+<div id="o2Fields" class="grid" style="margin-top:12px;display:none">
+<div><label for="flow">Flow rate</label><input id="flow" type="number" min="0" max="20" step="0.1" placeholder="e.g. 4"></div>
+<div><label for="flowUnit">Flow unit</label><select id="flowUnit"><option>L/min</option></select></div>
+<div class="full"><label for="delivery">Delivery method</label><select id="delivery"><option value="">Select</option><option>Nasal cannula</option><option>Oxymizer / reservoir cannula</option><option>Simple mask</option><option>Other</option></select></div>
+</div>
+<p class="hint">Record the oxygen setting used during the measurement. Do not use this tracker to determine or change your prescribed oxygen flow.</p>
+</section>
+
+<section class="card">
+<h2>Symptoms &amp; Conditions</h2>
+<div class="grid">
+<div><label for="dyspnea">Breathlessness</label><select id="dyspnea"><option value="">Select</option><option>None</option><option>Mild</option><option>Moderate</option><option>Severe</option><option>Very severe</option></select></div>
+<div><label for="activity">Activity at measurement</label><select id="activity"><option value="">Select</option><option>Seated / resting</option><option>Standing</option><option>Walking</option><option>After exertion</option><option>Other</option></select></div>
+<div><label for="symptoms">Other symptoms</label><input id="symptoms" placeholder="Optional"></div>
+<div><label for="position">Body position</label><select id="position"><option value="">Select</option><option>Seated</option><option>Standing</option><option>Lying</option><option>Walking</option><option>Other</option></select></div>
+<div class="full"><label for="notes">Notes</label><textarea id="notes" placeholder="Anything important about this measurement..."></textarea></div>
+</div>
+</section>
+
+<section class="card">
+<h2>Result</h2>
+<div id="resultEmpty" class="empty">Enter an SpO₂ reading, then select Calculate.</div>
+<div id="result" class="hidden">
+<div class="score"><span class="n" id="resultSpo2">--</span><span class="unit">% SpO₂</span></div>
+<div class="resultbar"><i id="bar"></i></div>
+<div class="statgrid">
+<div class="stat"><b id="resultPulse">--</b><span>Pulse / HR</span></div>
+<div class="stat"><b id="resultO2">--</b><span>Oxygen support</span></div>
+<div class="stat"><b id="resultContext">--</b><span>Context</span></div>
+<div class="stat"><b id="resultTime">--</b><span>Date / time</span></div>
+</div>
+<div id="changeBox" class="note hidden" style="margin-top:12px"></div>
+</div>
+</section>
+
+<section class="card">
+<h2>Actions</h2>
+<div class="actions">
+<button class="primary wide" id="calc">Calculate / Update Result</button>
+<button id="share">Share Result</button><button id="copy">Copy Result</button>
+<button id="save">Save Assessment</button><button id="clear">Clear Current</button>
+<button id="backup">Backup History</button><button id="restoreBtn">Restore History</button>
+<input id="restore" class="hidden" type="file" accept="application/json">
+<button class="danger wide" id="clearHistory">Clear Saved History</button>
+</div>
+</section>
+
+<section class="card">
+<h2>Trend</h2>
+<svg id="chart" class="chart" viewBox="0 0 600 190" role="img" aria-label="SpO2 trend chart"></svg>
+<p class="hint">The chart shows saved SpO₂ measurements over time. Measurements from different contexts or oxygen settings should not be treated as directly interchangeable.</p>
+</section>
+
+<section class="card">
+<h2>Saved Assessments</h2>
+<div id="history" class="hist"><div class="empty">No saved assessments yet.</div></div>
+</section>
+
+<section class="card">
+<h2>About SpO₂ Tracking</h2>
+<div class="note">SpO₂ from a pulse oximeter is an estimate, not a direct arterial blood measurement. Readings can be affected by factors including movement, poor circulation, cold skin, nail polish, device limitations, and skin pigmentation. Look at the reading together with symptoms and trends rather than treating a single number as a diagnosis.</div>
+<p class="hint" style="margin-top:10px">Follow your clinician's instructions for when to measure, what range is appropriate for you, and what action to take. Do not change prescribed oxygen or medication based solely on this tracker.</p>
+</section>
+
+<div class="footer">COPD Compass Care • Guided Support and Practical Care for COPD<br>This tracker is an educational record-keeping tool and does not replace medical evaluation or a clinician-directed oxygen plan.</div>
+</div>
+<div id="toast" class="toast" role="status"></div>
+<script>
+const KEY='ccc_spo2_oxygen_v1';
+const $=id=>document.getElementById(id);
+let history=JSON.parse(localStorage.getItem(KEY)||'[]');
+let current=null;
+function nowDate(){const d=new Date();return d.toISOString().slice(0,10)}
+function nowTime(){return new Date().toTimeString().slice(0,5)}
+$('date').value=nowDate();$('time').value=nowTime();
+function toast(s){const t=$('toast');t.textContent=s;t.style.display='block';clearTimeout(window._toast);window._toast=setTimeout(()=>t.style.display='none',1800)}
+function val(id){return $(id).value.trim()}
+function selected(name){const x=document.querySelector('input[name="'+name+'"]:checked');return x?x.value:''}
+function esc(s){return String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function data(){return {id:Date.now(),date:val('date'),time:val('time'),context:selected('ctx'),spo2:Number(val('spo2')),pulse:val('pulse')?Number(val('pulse')):null,device:val('device'),site:val('site'),o2:selected('o2'),flow:val('flow')?Number(val('flow')):null,flowUnit:val('flowUnit'),delivery:val('delivery'),dyspnea:val('dyspnea'),activity:val('activity'),symptoms:val('symptoms'),position:val('position'),notes:val('notes')}}
+function validate(d){if(!d.spo2||d.spo2<50||d.spo2>100){toast('Enter a valid SpO₂ value.');return false}return true}
+function labelContext(x){return ({rest:'Resting',activity:'During activity',post:'After activity',sleep:'Sleep / overnight',other:'Other'})[x]||'--'}
+function o2Label(d){if(d.o2==='yes')return (d.flow!=null?d.flow+' '+d.flowUnit+' ':'')+(d.delivery||'oxygen');return 'None'}
+function calc(){const d=data();if(!validate(d))return;current=d;$('resultEmpty').classList.add('hidden');$('result').classList.remove('hidden');$('resultSpo2').textContent=d.spo2;$('resultPulse').textContent=d.pulse??'--';$('resultO2').textContent=o2Label(d);$('resultContext').textContent=labelContext(d.context);$('resultTime').textContent=(d.date||'')+(d.time?' '+d.time:'');$('bar').style.width=Math.max(0,Math.min(100,d.spo2))+'%';const prev=history.filter(x=>x.spo2!=null).sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time))[0];if(prev){const diff=(d.spo2-prev.spo2);$('changeBox').classList.remove('hidden');$('changeBox').textContent=`Compared with most recent saved reading (${prev.date}), SpO₂ is ${diff>0?'+':''}${diff}% (${prev.spo2}% → ${d.spo2}%). Compare readings only when the measurement conditions are reasonably similar.`}else $('changeBox').classList.add('hidden');return d}
+function persist(){localStorage.setItem(KEY,JSON.stringify(history))}
+function save(){const d=current||calc();if(!d)return;const copy={...d,id:Date.now()};history.unshift(copy);persist();render();toast('Assessment saved.')}
+function resultText(d){return `COPD Compass Care – SpO₂ / Oxygen Assessment\nDate: ${d.date||'--'}${d.time?' at '+d.time:''}\nContext: ${labelContext(d.context)}\nSpO₂: ${d.spo2}%\nPulse/HR: ${d.pulse??'--'} bpm\nSupplemental oxygen: ${o2Label(d)}\nDevice/source: ${d.device||'--'}\nBreathlessness: ${d.dyspnea||'--'}\nActivity: ${d.activity||'--'}\nNotes: ${d.notes||'--'}\n\nThis is a recorded measurement, not a medical diagnosis or oxygen-treatment recommendation.`}
+async function copyResult(){const d=current||calc();if(!d)return;await navigator.clipboard.writeText(resultText(d));toast('Result copied.')}
+async function shareResult(){const d=current||calc();if(!d)return;const text=resultText(d);if(navigator.share){try{await navigator.share({title:'COPD Compass Care SpO₂ Assessment',text})}catch(e){}}else{await navigator.clipboard.writeText(text);toast('Result copied for sharing.')}}
+function clearCurrent(){current=null;['spo2','pulse','device','site','flow','delivery','dyspnea','activity','symptoms','position','notes'].forEach(id=>$(id).value='');$('date').value=nowDate();$('time').value=nowTime();$('o2No').checked=true;$('o2Fields').style.display='none';$('result').classList.add('hidden');$('resultEmpty').classList.remove('hidden');$('changeBox').classList.add('hidden');toast('Current assessment cleared.')}
+function render(){const h=$('history');if(!history.length){h.innerHTML='<div class="empty">No saved assessments yet.</div>';draw();return}h.innerHTML=history.slice().sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time)).map(x=>`<div class="histitem"><div class="histtop"><b>${esc(x.date||'--')} ${esc(x.time||'')}</b><b>${esc(x.spo2)}% SpO₂</b></div><div class="histmeta">${esc(labelContext(x.context))} • ${esc(o2Label(x))} • HR ${esc(x.pulse??'--')}</div><div class="histbuttons"><button class="small" onclick="viewItem(${x.id})">View</button><button class="small" onclick="compareItem(${x.id})">Compare</button><button class="small" onclick="shareItem(${x.id})">Share</button><button class="small danger" onclick="deleteItem(${x.id})">Delete</button></div></div>`).join('');draw()}
+function load(d){current={...d};$('date').value=d.date||'';$('time').value=d.time||'';document.querySelector(`input[name="ctx"][value="${CSS.escape(d.context||'rest')}"]`).checked=true;document.querySelector(`input[name="o2"][value="${CSS.escape(d.o2||'no')}"]`).checked=true;$('spo2').value=d.spo2??'';$('pulse').value=d.pulse??'';$('device').value=d.device||'';$('site').value=d.site||'';$('flow').value=d.flow??'';$('delivery').value=d.delivery||'';$('dyspnea').value=d.dyspnea||'';$('activity').value=d.activity||'';$('symptoms').value=d.symptoms||'';$('position').value=d.position||'';$('notes').value=d.notes||'';$('o2Fields').style.display=d.o2==='yes'?'grid':'none';calc();window.scrollTo({top:0,behavior:'smooth'})}
+function viewItem(id){const d=history.find(x=>x.id===id);if(d)load(d)}
+function compareItem(id){const d=history.find(x=>x.id===id);if(!d)return;const others=history.filter(x=>x.id!==id&&x.spo2!=null).sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time));const p=others[0];if(!p){toast('Need at least two saved readings to compare.');return}const diff=d.spo2-p.spo2;alert(`SpO₂ comparison\n\nSelected: ${d.date} ${d.spo2}%\nPrevious saved: ${p.date} ${p.spo2}%\nChange: ${diff>0?'+':''}${diff}%\n\nContext: ${labelContext(d.context)} vs ${labelContext(p.context)}\nOxygen: ${o2Label(d)} vs ${o2Label(p)}\n\nCompare cautiously when conditions differ.`)}
+function shareItem(id){const d=history.find(x=>x.id===id);if(!d)return;navigator.share?navigator.share({title:'COPD Compass Care SpO₂ Assessment',text:resultText(d)}).catch(()=>{}):navigator.clipboard.writeText(resultText(d)).then(()=>toast('Result copied.'))}
+function deleteItem(id){if(!confirm('Delete this saved assessment?'))return;history=history.filter(x=>x.id!==id);persist();render();toast('Assessment deleted.')}
+function draw(){const svg=$('chart');svg.innerHTML='';const data=history.filter(x=>Number.isFinite(x.spo2)).sort((a,b)=>(a.date+a.time).localeCompare(b.date+b.time));const NS='http://www.w3.org/2000/svg';function el(t,a){const n=document.createElementNS(NS,t);for(const k in a)n.setAttribute(k,a[k]);svg.appendChild(n);return n}el('rect',{x:0,y:0,width:600,height:190,fill:'transparent'});if(!data.length)return;const min=Math.min(80,...data.map(x=>x.spo2))-2,max=Math.max(100,...data.map(x=>x.spo2))+1;const pts=data.map((x,i)=>{const px=35+(i/(Math.max(1,data.length-1)))*545;const py=165-((x.spo2-min)/(max-min))*130;return [px,py,x]});el('line',{x1:35,y1:165,x2:580,y2:165,stroke:'var(--line)','stroke-width':2});el('line',{x1:35,y1:35,x2:35,y2:165,stroke:'var(--line)','stroke-width':2});let path='';pts.forEach((p,i)=>path+=(i?' L ':'M ')+p[0]+' '+p[1]);el('path',{d:path,fill:'none',stroke:'var(--navy)','stroke-width':3});pts.forEach(p=>{el('circle',{cx:p[0],cy:p[1],r:4,fill:'var(--purple)'});});el('text',{x:38,y:28,fill:'currentColor','font-size':13}).textContent=max+'%';el('text',{x:38,y:183,fill:'currentColor','font-size':13}).textContent=min+'%'}
+$('calc').onclick=calc;$('save').onclick=save;$('copy').onclick=copyResult;$('share').onclick=shareResult;$('clear').onclick=clearCurrent;$('clearHistory').onclick=()=>{if(confirm('Clear all saved SpO₂ / oxygen history?')){history=[];persist();render();toast('Saved history cleared.')}};
+$('backup').onclick=()=>{const blob=new Blob([JSON.stringify(history,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='copd-compass-care-spo2-backup.json';a.click();URL.revokeObjectURL(a.href)};
+$('restoreBtn').onclick=()=>$('restore').click();$('restore').onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{const x=JSON.parse(r.result);if(!Array.isArray(x))throw Error();history=x;persist();render();toast('History restored.')}catch{toast('Could not restore that file.')}};r.readAsText(f)};
+$('o2Yes').onchange=()=>{$('o2Fields').style.display='grid'};$('o2No').onchange=()=>{$('o2Fields').style.display='none'};
+$('themeBtn').onclick=()=>{const root=document.documentElement;const dark=root.getAttribute('data-theme')==='dark';root.setAttribute('data-theme',dark?'light':'dark')};
+render();
+</script>
+<div class="ccc-next"><a href="copd_compass_6mwt_tracker.html">← 6-Minute Walk</a><a class="primary" href="copd_compass_symptoms_tracker.html">Next: Symptoms →</a></div>
+</body>
+</html>
